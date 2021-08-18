@@ -3,6 +3,7 @@
 mixin InputValidationMixin {
   bool isPasswordValid(String password) => password.length == 6;
 
+  /// Email validation for text field
   emailValidation(String email) {
     String pattern =
         r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -13,6 +14,7 @@ mixin InputValidationMixin {
       return "Email is not correct";
   }
 
+  /// Password validation for text field
   passwordValidation(String password) {
     String pattern1 = r".{8,}";
     String pattern2 = r"^(?=.*[A-Za-z])(?=.*\d)";

@@ -2,6 +2,8 @@ import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/button_view.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -58,18 +60,16 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
               ),
               Container(
                 width: 100.w,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10.0.w,
-                  vertical: 2.h,
+                margin: EdgeInsets.only(
+                  left: 10.0.w,
+                  right: 10.0.w,
+                  top: 2.h,
+                  bottom: 4.h,
                 ),
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
-                      );
+                      // TODO: implement login navigation
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -83,6 +83,39 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                   ),
                 ),
               ),
+              Container(
+                width: 100.w,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 10.0.w,
+                ),
+                child: SignInButton(
+                  Buttons.Google,
+                  text: "Sign in with Google",
+                  onPressed: () {},
+                ),
+              ),
+              Container(
+                width: 100.w,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 10.0.w,
+                ),
+                child: SignInButton(
+                  Buttons.Facebook,
+                  text: "Sign in with Facebook",
+                  onPressed: () {},
+                ),
+              ),
+              Container(
+                width: 100.w,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 10.0.w,
+                ),
+                child: SignInButton(
+                  Buttons.LinkedIn,
+                  text: "Sign in with LinkedIn",
+                  onPressed: () {},
+                ),
+              )
             ],
           ),
         ),
