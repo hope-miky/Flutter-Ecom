@@ -1,3 +1,4 @@
+import 'package:addisecom/components/logo_text.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
@@ -32,24 +33,7 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
             children: [
               Container(
                 margin: EdgeInsets.only(bottom: 2.h),
-                child: RichText(
-                  text: TextSpan(
-                    text: "Addis",
-                    style: TextStyle(
-                        fontSize: 25.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: "Ecom",
-                        style: TextStyle(
-                          fontSize: 25.sp,
-                          color: maincolor,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                child: LogoText(),
               ),
               CustomTextFiled(
                 placeholder: "Email",
