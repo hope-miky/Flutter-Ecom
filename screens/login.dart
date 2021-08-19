@@ -1,6 +1,8 @@
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
+import 'package:addisecom/routes/route.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -126,7 +128,11 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                         color: Colors.blueGrey,
                       ),
                     ),
-                    TextButton(onPressed: () {}, child: Text("Sign up"))
+                    TextButton(
+                        onPressed: () {
+                          AutoRouter.of(context).pushNamed("/signup-page");
+                        },
+                        child: Text("Sign up"))
                   ],
                 ),
               ),
