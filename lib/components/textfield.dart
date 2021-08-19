@@ -91,7 +91,9 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
         controller: widget.controller,
         obscureText:
             widget.inputtype == CustomInputTypes.password ? _obscureval : false,
-        validator: (value) => widget.validator(value),
+        validator: widget.validator != null
+            ? (value) => widget.validator(value, widget.placeholder)
+            : (value) => null,
         textInputAction: TextInputAction.next,
         keyboardType: widget.inputtype == CustomInputTypes.phone
             ? TextInputType.number
