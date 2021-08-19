@@ -115,7 +115,21 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                   text: "Sign in with LinkedIn",
                   onPressed: () {},
                 ),
-              )
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an acount?",
+                      style: TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+                    TextButton(onPressed: () {}, child: Text("Sign up"))
+                  ],
+                ),
+              ),
             ],
           ),
         ),
