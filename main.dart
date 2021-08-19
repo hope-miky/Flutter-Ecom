@@ -1,4 +1,6 @@
+import 'package:addisecom/routes/route.gr.dart';
 import 'package:addisecom/screens/login.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -7,15 +9,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final _appRoute = AppRouter();
+
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
-      return MaterialApp(
-        title: 'AddisEcom',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: LoginScreen(),
+      return MaterialApp.router(
+        routeInformationParser: _appRoute.defaultRouteParser(),
+        routerDelegate: AutoRouterDelegate(_appRoute),
       );
     });
   }
