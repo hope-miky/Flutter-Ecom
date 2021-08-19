@@ -28,6 +28,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
   final FocusNode _focusNode = FocusNode();
   var _contries = countryList;
   OverlayEntry? _overlayEntry;
+  String _selectedcontry = "Ethiopia";
 
   @override
   void initState() {
@@ -64,7 +65,14 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                     shrinkWrap: true,
                     children: _contries
                         .map((e) => ListTile(
+                              selectedTileColor: Colors.blueGrey,
+                              selected: e == _selectedcontry,
                               title: Text(e),
+                              onTap: () {
+                                setState(() {
+                                  widget.controller!.text = e;
+                                });
+                              },
                             ))
                         .toList(),
                   ),
