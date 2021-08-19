@@ -46,9 +46,8 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                 DateTime? pickedDate = await showDatePicker(
                     context: context,
                     initialDate: DateTime.now(),
-                    firstDate: DateTime(
-                        2000), //DateTime.now() - not to allow to choose before today.
-                    lastDate: DateTime(2101));
+                    firstDate: DateTime(1600),
+                    lastDate: DateTime.now());
 
                 if (pickedDate != null) {
                   print(

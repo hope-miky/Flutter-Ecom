@@ -1,6 +1,7 @@
 import 'package:addisecom/components/logo_text.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
 import 'package:sizer/sizer.dart';
@@ -53,6 +54,12 @@ class _SignupPageState extends State<SignupPage> with InputValidationMixin {
                 controller: _emailcontroller,
               ),
               CustomTextFiled(
+                placeholder: "Birth date",
+                validator: dateValidation,
+                date: true,
+                controller: _bdatecontroller,
+              ),
+              CustomTextFiled(
                 placeholder: "Phone Number",
                 validator: requiredval,
                 controller: _phonenumbercontroller,
@@ -69,19 +76,12 @@ class _SignupPageState extends State<SignupPage> with InputValidationMixin {
                 validator: requiredval,
                 controller: _addressline2controller,
               ),
-              CustomTextFiled(
-                placeholder: "Birth date",
-                validator: requiredval,
-                date: true,
-                controller: _bdatecontroller,
-              ),
               Container(
                 width: 100.w,
                 margin: EdgeInsets.only(
                   left: 10.0.w,
                   right: 10.0.w,
                   top: 2.h,
-                  bottom: 4.h,
                 ),
                 child: ElevatedButton(
                   onPressed: () {
@@ -93,12 +93,32 @@ class _SignupPageState extends State<SignupPage> with InputValidationMixin {
                     primary: maincolor,
                   ),
                   child: Text(
-                    "Sign in",
+                    "Register",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an acount?",
+                    style: TextStyle(
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        AutoRouter.of(context).pushNamed("/");
+                      },
+                      child: Text(
+                        "Sign in",
+                        style: TextStyle(
+                            color: maincolor, fontWeight: FontWeight.bold),
+                      ))
+                ],
               ),
             ],
           ),

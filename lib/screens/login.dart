@@ -116,7 +116,11 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                         onPressed: () {
                           AutoRouter.of(context).pushNamed("/signup-page");
                         },
-                        child: Text("Sign up"))
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: maincolor, fontWeight: FontWeight.bold),
+                        ))
                   ],
                 ),
               ),

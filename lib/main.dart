@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp.router(
         routeInformationParser: _appRoute.defaultRouteParser(),
+        debugShowCheckedModeBanner: false,
         routerDelegate: AutoRouterDelegate(_appRoute),
       );
     });
