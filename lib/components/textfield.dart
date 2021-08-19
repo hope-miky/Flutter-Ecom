@@ -26,7 +26,7 @@ class CustomTextFiled extends StatefulWidget {
 
 class _CustomTextFiledState extends State<CustomTextFiled> {
   final FocusNode _focusNode = FocusNode();
-
+  var _contries = countryList;
   OverlayEntry? _overlayEntry;
 
   @override
@@ -56,12 +56,13 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
               // width: size.width,
               child: Material(
                 elevation: 4.0,
-                child: Container(
-                  height: 30.h,
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  height: _contries.length < 6 ? 6.h * _contries.length : 30.h,
                   child: ListView(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
-                    children: countryList
+                    children: _contries
                         .map((e) => ListTile(
                               title: Text(e),
                             ))
@@ -88,6 +89,12 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
             ? TextInputType.number
             : TextInputType.text,
         readOnly: widget.inputtype == CustomInputTypes.date ? true : false,
+        onChanged: (String value) {
+          _contries = countryList
+              .where((element) => element.toString().contains(value))
+              .toList();
+          setState(() {});
+        },
         onTap: widget.inputtype == CustomInputTypes.date
             ? () async {
                 DateTime? pickedDate = await showDatePicker(
