@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomTextFiled extends StatefulWidget {
@@ -6,6 +8,7 @@ class CustomTextFiled extends StatefulWidget {
   final obscure;
   final validator;
   final phonenum;
+  final bool date;
   final Function? onchanged;
   final TextEditingController? controller;
   final TextEditingController? contrycodecontroller;
@@ -15,6 +18,7 @@ class CustomTextFiled extends StatefulWidget {
       this.obscure = false,
       this.validator,
       this.phonenum = false,
+      this.date = false,
       this.onchanged,
       this.controller,
       this.contrycodecontroller});
@@ -33,6 +37,37 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
         controller: widget.controller,
         obscureText: widget.obscure ? _obscureval : false,
         validator: (value) => widget.validator(value),
+        textInputAction: TextInputAction.next,
+        keyboardType:
+            widget.phonenum ? TextInputType.number : TextInputType.text,
+        readOnly: widget.date,
+        onTap: widget.date
+            ? () async {
+                DateTime? pickedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(
+                        2000), //DateTime.now() - not to allow to choose before today.
+                    lastDate: DateTime(2101));
+
+                if (pickedDate != null) {
+                  print(
+                      pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                  String formattedDate =
+                      DateFormat('yyyy-MM-dd').format(pickedDate);
+                  print(
+                      formattedDate); //formatted date output using intl package =>  2021-03-16
+                  //you can implement different kind of Date Format here according to your requirement
+
+                  setState(() {
+                    widget.controller!.text =
+                        formattedDate; //set output date to TextField value.
+                  });
+                } else {
+                  print("Date is not selected");
+                }
+              }
+            : null,
         decoration: InputDecoration(
           prefix: widget.phonenum
               ? Container(
@@ -53,6 +88,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                   ),
                 )
               : null,
+          prefixIcon: widget.date ? Icon(Icons.date_range) : null,
           labelText: widget.placeholder,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           isDense: true,
