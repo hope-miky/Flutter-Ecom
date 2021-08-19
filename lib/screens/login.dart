@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      // TODO: implement login navigation
+                      AutoRouter.of(context).pushNamed("/main-dashboard");
                     }
                   },
                   style: ElevatedButton.styleFrom(
