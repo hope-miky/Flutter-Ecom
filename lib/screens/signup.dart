@@ -22,6 +22,7 @@ class _SignupPageState extends State<SignupPage> with InputValidationMixin {
   TextEditingController _addressline1controller = new TextEditingController();
   TextEditingController _addressline2controller = new TextEditingController();
   TextEditingController _bdatecontroller = new TextEditingController();
+  TextEditingController _countrycontroller = new TextEditingController();
   // TextEditingController _addressline2controller = new TextEditingController();
 
   @override
@@ -56,15 +57,21 @@ class _SignupPageState extends State<SignupPage> with InputValidationMixin {
               CustomTextFiled(
                 placeholder: "Birth date",
                 validator: dateValidation,
-                date: true,
+                inputtype: CustomInputTypes.date,
                 controller: _bdatecontroller,
               ),
               CustomTextFiled(
                 placeholder: "Phone Number",
                 validator: requiredval,
+                inputtype: CustomInputTypes.phone,
                 controller: _phonenumbercontroller,
                 contrycodecontroller: _contrycodecontroller,
-                phonenum: true,
+              ),
+              CustomTextFiled(
+                placeholder: "Country",
+                validator: requiredval,
+                inputtype: CustomInputTypes.country,
+                controller: _countrycontroller,
               ),
               CustomTextFiled(
                 placeholder: "Address line 1",

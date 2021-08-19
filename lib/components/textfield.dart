@@ -1,3 +1,4 @@
+import 'package:addisecom/constants/contries.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -5,43 +6,89 @@ import 'package:sizer/sizer.dart';
 
 class CustomTextFiled extends StatefulWidget {
   final placeholder;
-  final obscure;
   final validator;
-  final phonenum;
-  final bool date;
   final Function? onchanged;
   final TextEditingController? controller;
   final TextEditingController? contrycodecontroller;
+  final CustomInputTypes inputtype;
 
   const CustomTextFiled(
       {@required this.placeholder,
-      this.obscure = false,
       this.validator,
-      this.phonenum = false,
-      this.date = false,
       this.onchanged,
       this.controller,
-      this.contrycodecontroller});
+      this.contrycodecontroller,
+      this.inputtype = CustomInputTypes.text});
 
   @override
   _CustomTextFiledState createState() => _CustomTextFiledState();
 }
 
 class _CustomTextFiledState extends State<CustomTextFiled> {
+  final FocusNode _focusNode = FocusNode();
+
+  OverlayEntry? _overlayEntry;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (widget.inputtype == CustomInputTypes.country) if (_focusNode
+          .hasFocus) {
+        _overlayEntry = _createOverlayEntry();
+        Overlay.of(context)!.insert(_overlayEntry!);
+      } else {
+        _overlayEntry!.remove();
+      }
+    });
+  }
+
+  OverlayEntry _createOverlayEntry() {
+    RenderBox? renderBox = context.findRenderObject() as RenderBox;
+    var size = renderBox.size;
+    var offset = renderBox.localToGlobal(Offset.zero);
+
+    return OverlayEntry(
+        builder: (context) => Positioned(
+              left: 10.w,
+              right: 10.w,
+              top: offset.dy + size.height + 5.0,
+              // width: size.width,
+              child: Material(
+                elevation: 4.0,
+                child: Container(
+                  height: 30.h,
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: countryList
+                        .map((e) => ListTile(
+                              title: Text(e),
+                            ))
+                        .toList(),
+                  ),
+                ),
+              ),
+            ));
+  }
+
   bool _obscureval = true;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 1.h),
       child: TextFormField(
+        focusNode: _focusNode,
         controller: widget.controller,
-        obscureText: widget.obscure ? _obscureval : false,
+        obscureText:
+            widget.inputtype == CustomInputTypes.password ? _obscureval : false,
         validator: (value) => widget.validator(value),
         textInputAction: TextInputAction.next,
-        keyboardType:
-            widget.phonenum ? TextInputType.number : TextInputType.text,
-        readOnly: widget.date,
-        onTap: widget.date
+        keyboardType: widget.inputtype == CustomInputTypes.phone
+            ? TextInputType.number
+            : TextInputType.text,
+        readOnly: widget.inputtype == CustomInputTypes.date ? true : false,
+        onTap: widget.inputtype == CustomInputTypes.date
             ? () async {
                 DateTime? pickedDate = await showDatePicker(
                     context: context,
@@ -68,7 +115,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
               }
             : null,
         decoration: InputDecoration(
-          prefix: widget.phonenum
+          prefix: widget.inputtype == CustomInputTypes.phone
               ? Container(
                   width: 10.w,
                   margin: EdgeInsets.only(right: 10),
@@ -87,11 +134,13 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                   ),
                 )
               : null,
-          prefixIcon: widget.date ? Icon(Icons.date_range) : null,
+          prefixIcon: widget.inputtype == CustomInputTypes.date
+              ? Icon(Icons.date_range)
+              : null,
           labelText: widget.placeholder,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           isDense: true,
-          suffixIcon: widget.obscure
+          suffixIcon: widget.inputtype == CustomInputTypes.password
               ? InkWell(
                   onTap: () {
                     setState(() {
@@ -111,3 +160,5 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
     );
   }
 }
+
+enum CustomInputTypes { text, number, password, phone, date, country }

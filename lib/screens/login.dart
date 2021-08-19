@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
               ),
               CustomTextFiled(
                 placeholder: "Password",
-                obscure: true,
+                inputtype: CustomInputTypes.password,
                 validator: passwordValidation,
               ),
               Container(
