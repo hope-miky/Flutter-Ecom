@@ -7,9 +7,10 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../screens/dashboard/maindashboard.dart' as _i5;
 import '../screens/login.dart' as _i3;
+import '../screens/mobile/dashboard/maindashboard.mobile.dart' as _i5;
 import '../screens/signup.dart' as _i4;
+import '../screens/web/maindashboard.web.dart' as _i6;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -31,26 +32,35 @@ class AppRouter extends _i1.RootStackRouter {
               orElse: () => const SignupRouteArgs());
           return _i4.SignupPage(key: args.key);
         }),
-    MainDashboard.name: (routeData) => _i1.MaterialPageX<dynamic>(
+    MainDashboardMobile.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
-          final args = data.argsAs<MainDashboardArgs>(
-              orElse: () => const MainDashboardArgs());
-          return _i5.MainDashboard(key: args.key);
+          final args = data.argsAs<MainDashboardMobileArgs>(
+              orElse: () => const MainDashboardMobileArgs());
+          return _i5.MainDashboardMobile(key: args.key);
+        }),
+    MainDashboardWeb.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<MainDashboardWebArgs>(
+              orElse: () => const MainDashboardWebArgs());
+          return _i6.MainDashboardWeb(key: args.key);
         })
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(LoginScreen.name, path: '/'),
+        _i1.RouteConfig(LoginScreen.name, path: '/login-screen'),
         _i1.RouteConfig(SignupRoute.name, path: '/signup-page'),
-        _i1.RouteConfig(MainDashboard.name, path: '/main-dashboard')
+        _i1.RouteConfig(MainDashboardMobile.name,
+            path: '/main-dashboard-mobile'),
+        _i1.RouteConfig(MainDashboardWeb.name, path: '/')
       ];
 }
 
 class LoginScreen extends _i1.PageRouteInfo<LoginScreenArgs> {
   LoginScreen({_i2.Key? key})
-      : super(name, path: '/', args: LoginScreenArgs(key: key));
+      : super(name, path: '/login-screen', args: LoginScreenArgs(key: key));
 
   static const String name = 'LoginScreen';
 }
@@ -74,15 +84,30 @@ class SignupRouteArgs {
   final _i2.Key? key;
 }
 
-class MainDashboard extends _i1.PageRouteInfo<MainDashboardArgs> {
-  MainDashboard({_i2.Key? key})
-      : super(name, path: '/main-dashboard', args: MainDashboardArgs(key: key));
+class MainDashboardMobile extends _i1.PageRouteInfo<MainDashboardMobileArgs> {
+  MainDashboardMobile({_i2.Key? key})
+      : super(name,
+            path: '/main-dashboard-mobile',
+            args: MainDashboardMobileArgs(key: key));
 
-  static const String name = 'MainDashboard';
+  static const String name = 'MainDashboardMobile';
 }
 
-class MainDashboardArgs {
-  const MainDashboardArgs({this.key});
+class MainDashboardMobileArgs {
+  const MainDashboardMobileArgs({this.key});
+
+  final _i2.Key? key;
+}
+
+class MainDashboardWeb extends _i1.PageRouteInfo<MainDashboardWebArgs> {
+  MainDashboardWeb({_i2.Key? key})
+      : super(name, path: '/', args: MainDashboardWebArgs(key: key));
+
+  static const String name = 'MainDashboardWeb';
+}
+
+class MainDashboardWebArgs {
+  const MainDashboardWebArgs({this.key});
 
   final _i2.Key? key;
 }

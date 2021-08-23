@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-class MainDashboard extends StatefulWidget {
-  MainDashboard({Key? key}) : super(key: key);
+class MainDashboardMobile extends StatefulWidget {
+  MainDashboardMobile({Key? key}) : super(key: key);
 
   @override
-  _MainDashboardState createState() => _MainDashboardState();
+  _MainDashboardMobileState createState() => _MainDashboardMobileState();
 }
 
-class _MainDashboardState extends State<MainDashboard> {
+class _MainDashboardMobileState extends State<MainDashboardMobile> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
