@@ -1,18 +1,20 @@
 import 'package:addisecom/constants/sidebarcontents.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class SideBarWeb extends StatefulWidget {
-  SideBarWeb({
-    Key? key,
-  }) : super(key: key);
+  BuildContext? ctx;
+  SideBarWeb({Key? key, this.ctx}) : super(key: key);
 
   @override
   _SideBarWebState createState() => _SideBarWebState();
 }
 
 class _SideBarWebState extends State<SideBarWeb> {
-  bool dense = false;
+  bool dense = true;
+  final _innerRouterKey = GlobalKey<AutoRouterState>();
+
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
@@ -50,7 +52,13 @@ class _SideBarWebState extends State<SideBarWeb> {
                         overflow: TextOverflow.ellipsis,
                       )
                     : null,
-                onTap: () {},
+                onTap: () {
+                  AutoRouter.of(context).pushNamed(e["route"] as String);
+                  // AutoRouter.innerRouterOf(widget.ctx!, e["route"] as String);
+                  final router = _innerRouterKey.currentState?.controller;
+                  // router?.push(const UsersRoute());
+                  // router.innerRouterOf(routeName)
+                },
               );
             }).toList(),
           ),

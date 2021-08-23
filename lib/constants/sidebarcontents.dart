@@ -4,21 +4,21 @@ const sidebarcontents = [
   {
     "name": "Home Page",
     "icon": Icon(Icons.home),
-    "route": "/dashboard",
+    "route": "/",
   },
   {
     "name": "Items",
     "icon": Icon(Icons.list),
-    "route": "/dashboard",
+    "route": "/items",
   },
   {
     "name": "Categories",
     "icon": Icon(Icons.category),
-    "route": "/dashboard",
+    "route": "/categories",
   },
   {
     "name": "Accounts",
     "icon": Icon(Icons.account_box),
-    "route": "/dashboard",
+    "route": "/accounts",
   },
 ];
