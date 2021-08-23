@@ -15,23 +15,21 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            setState(() {
-              dense = !dense;
-            });
-          },
-        ),
-        title: Text("AddisInventory Management system"),
-      ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: Icon(Icons.menu),
+      //     onPressed: () {
+      //       setState(() {
+      //         dense = !dense;
+      //       });
+      //     },
+      //   ),
+      //   title: Text("AddisInventory Management system"),
+      // ),
       body: SizedBox.expand(
         child: Row(
           children: [
-            SideBarWeb(
-              dense: dense,
-            ),
+            SideBarWeb(),
             Expanded(child: Container(color: Colors.green))
           ],
         ),
