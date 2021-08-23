@@ -29,7 +29,8 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
         child: SizedBox.expand(
           child: Container(
             margin: SizerUtil.deviceType == DeviceType.web
-                ? EdgeInsets.symmetric(horizontal: 40.w)
+                ? EdgeInsets.symmetric(
+                    horizontal: SizerUtil.width > 700 ? 60.w : 10.w)
                 : null,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,9 +52,7 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                 Container(
                   width: 100.w,
                   margin: EdgeInsets.only(
-                    left: 10.0.w,
-                    right: 10.0.w,
-                    top: 2.h,
+                    top: SizerUtil.deviceType == DeviceType.mobile ? 2.h : 2,
                     bottom: 4.h,
                   ),
                   child: ElevatedButton(
@@ -64,6 +63,9 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: maincolor,
+                      padding: SizerUtil.deviceType == DeviceType.web
+                          ? EdgeInsets.symmetric(vertical: 17)
+                          : null,
                     ),
                     child: Text(
                       "Sign in",

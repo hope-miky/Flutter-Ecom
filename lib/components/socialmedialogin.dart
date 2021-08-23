@@ -12,8 +12,7 @@ class SocialMediaLoginIcons extends StatelessWidget {
         Container(
           width: 100.w,
           margin: EdgeInsets.symmetric(
-            horizontal: 10.0.w,
-            vertical: 0.2.h,
+            vertical: SizerUtil.deviceType == DeviceType.mobile ? 0.2.h : 0.5.h,
           ),
           child: SignInButton(
             Buttons.Google,
@@ -24,8 +23,7 @@ class SocialMediaLoginIcons extends StatelessWidget {
         Container(
           width: 100.w,
           margin: EdgeInsets.symmetric(
-            horizontal: 10.0.w,
-            vertical: 0.2.h,
+            vertical: SizerUtil.deviceType == DeviceType.mobile ? 0.2.h : 0.5.h,
           ),
           child: SignInButton(
             Buttons.Facebook,
@@ -36,8 +34,7 @@ class SocialMediaLoginIcons extends StatelessWidget {
         Container(
           width: 100.w,
           margin: EdgeInsets.symmetric(
-            horizontal: 10.0.w,
-            vertical: 0.2.h,
+            vertical: SizerUtil.deviceType == DeviceType.mobile ? 0.2.h : 0.5.h,
           ),
           child: SignInButton(
             Buttons.LinkedIn,
