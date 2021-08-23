@@ -12,12 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(builder: (context, orientation, deviceType) {
-      return MaterialApp.router(
-        routeInformationParser: _appRoute.defaultRouteParser(),
-        debugShowCheckedModeBanner: false,
-        routerDelegate: AutoRouterDelegate(_appRoute),
-      );
-    });
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp.router(
+          routeInformationParser: _appRoute.defaultRouteParser(),
+          debugShowCheckedModeBanner: false,
+          routerDelegate: AutoRouterDelegate(_appRoute),
+        );
+      },
+    );
   }
 }

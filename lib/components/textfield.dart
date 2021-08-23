@@ -170,7 +170,9 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
               : Container(
                   width: 0,
                 ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
+          contentPadding: EdgeInsets.symmetric(
+              horizontal:
+                  SizerUtil.deviceType == DeviceType.mobile ? 5.w : 2.w),
           border: OutlineInputBorder(),
         ),
       ),

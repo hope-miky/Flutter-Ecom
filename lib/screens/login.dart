@@ -1,4 +1,6 @@
 import 'package:addisecom/components/logo_text.dart';
+import 'package:addisecom/components/signinbutton.dart';
+import 'package:addisecom/components/socialmedialogin.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
@@ -24,107 +26,57 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
     return Scaffold(
       body: Form(
         key: _formkey,
-        child: Container(
-          height: 100.h,
-          width: 100.w,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(bottom: 2.h),
-                child: LogoText(),
-              ),
-              CustomTextFiled(
-                placeholder: "Email",
-                validator: emailValidation,
-              ),
-              CustomTextFiled(
-                placeholder: "Password",
-                inputtype: CustomInputTypes.password,
-                validator: passwordValidation,
-              ),
-              Container(
-                width: 100.w,
-                margin: EdgeInsets.only(
-                  left: 10.0.w,
-                  right: 10.0.w,
-                  top: 2.h,
-                  bottom: 4.h,
+        child: SizedBox.expand(
+          child: Container(
+            margin: SizerUtil.deviceType == DeviceType.web
+                ? EdgeInsets.symmetric(horizontal: 40.w)
+                : null,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 2.h),
+                  child: LogoText(),
                 ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formkey.currentState!.validate()) {
-                      AutoRouter.of(context).pushNamed("/main-dashboard");
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: maincolor,
+                CustomTextFiled(
+                  placeholder: "Email",
+                  validator: emailValidation,
+                ),
+                CustomTextFiled(
+                  placeholder: "Password",
+                  inputtype: CustomInputTypes.password,
+                  validator: passwordValidation,
+                ),
+                Container(
+                  width: 100.w,
+                  margin: EdgeInsets.only(
+                    left: 10.0.w,
+                    right: 10.0.w,
+                    top: 2.h,
+                    bottom: 4.h,
                   ),
-                  child: Text(
-                    "Sign in",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formkey.currentState!.validate()) {
+                        AutoRouter.of(context).pushNamed("/main-dashboard");
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: maincolor,
                     ),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100.w,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10.0.w,
-                ),
-                child: SignInButton(
-                  Buttons.Google,
-                  text: "Sign in with Google",
-                  onPressed: () {},
-                ),
-              ),
-              Container(
-                width: 100.w,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10.0.w,
-                ),
-                child: SignInButton(
-                  Buttons.Facebook,
-                  text: "Sign in with Facebook",
-                  onPressed: () {},
-                ),
-              ),
-              Container(
-                width: 100.w,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10.0.w,
-                ),
-                child: SignInButton(
-                  Buttons.LinkedIn,
-                  text: "Sign in with LinkedIn",
-                  onPressed: () {},
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an acount?",
+                    child: Text(
+                      "Sign in",
                       style: TextStyle(
-                        color: Colors.blueGrey,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextButton(
-                        onPressed: () {
-                          AutoRouter.of(context).pushNamed("/signup-page");
-                        },
-                        child: Text(
-                          "Sign up",
-                          style: TextStyle(
-                              color: maincolor, fontWeight: FontWeight.bold),
-                        ))
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                SocialMediaLoginIcons(),
+                CustomSignInButton()
+              ],
+            ),
           ),
         ),
       ),

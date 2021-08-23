@@ -42,15 +42,15 @@ class AppRouter extends _i1.RootStackRouter {
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(LoginScreen.name, path: '/login-screen'),
+        _i1.RouteConfig(LoginScreen.name, path: '/'),
         _i1.RouteConfig(SignupRoute.name, path: '/signup-page'),
-        _i1.RouteConfig(MainDashboard.name, path: '/')
+        _i1.RouteConfig(MainDashboard.name, path: '/main-dashboard')
       ];
 }
 
 class LoginScreen extends _i1.PageRouteInfo<LoginScreenArgs> {
   LoginScreen({_i2.Key? key})
-      : super(name, path: '/login-screen', args: LoginScreenArgs(key: key));
+      : super(name, path: '/', args: LoginScreenArgs(key: key));
 
   static const String name = 'LoginScreen';
 }
@@ -76,7 +76,7 @@ class SignupRouteArgs {
 
 class MainDashboard extends _i1.PageRouteInfo<MainDashboardArgs> {
   MainDashboard({_i2.Key? key})
-      : super(name, path: '/', args: MainDashboardArgs(key: key));
+      : super(name, path: '/main-dashboard', args: MainDashboardArgs(key: key));
 
   static const String name = 'MainDashboard';
 }

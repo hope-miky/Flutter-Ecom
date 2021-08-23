@@ -12,14 +12,14 @@ class LogoText extends StatelessWidget {
         text: TextSpan(
           text: "Addis",
           style: TextStyle(
-              fontSize: 25.sp,
+              fontSize: 17.sp,
               color: Colors.black,
               fontWeight: FontWeight.bold),
           children: <TextSpan>[
             TextSpan(
               text: "Ecom",
               style: TextStyle(
-                fontSize: 25.sp,
+                fontSize: 17.sp,
                 color: maincolor,
               ),
             )
