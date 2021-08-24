@@ -99,8 +99,6 @@ class _CustomMenuButtonState extends State<CustomMenuButton> {
   }
 
   Widget slideIt(BuildContext context, int index, animation) {
-    int item = _items[index];
-    TextStyle? textStyle = Theme.of(context).textTheme.headline4;
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(-1, 0),

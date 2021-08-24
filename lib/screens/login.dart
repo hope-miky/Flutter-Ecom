@@ -4,10 +4,7 @@ import 'package:addisecom/components/socialmedialogin.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_view.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatefulWidget {

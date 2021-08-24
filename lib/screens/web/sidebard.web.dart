@@ -1,10 +1,9 @@
 import 'package:addisecom/constants/sidebarcontents.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class SideBarWeb extends StatefulWidget {
-  Function? onpressed;
+  final Function? onpressed;
   SideBarWeb({Key? key, this.onpressed}) : super(key: key);
 
   @override
