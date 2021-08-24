@@ -4,7 +4,6 @@ import 'package:addisecom/components/socialmedialogin.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
-import 'package:addisecom/routes/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_view.dart';
@@ -57,14 +56,13 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formkey.currentState!.validate()) {
-                        if (SizerUtil.deviceType == DeviceType.mobile)
-                          AutoRouter.of(context)
-                              .pushNamed("/main-dashboard-mobile");
-                        else
-                          AutoRouter.of(context)
-                              .pushNamed("/main-dashboard-web");
-                      }
+                      // if (_formkey.currentState!.validate()) {
+                      // if (SizerUtil.deviceType == DeviceType.mobile)
+                      //   AutoRouter.of(context)
+                      //       .pushNamed("/main-dashboard-mobile");
+                      // else
+                      Navigator.of(context).pushNamed("/dashboard/main");
+                      // }
                     },
                     style: ElevatedButton.styleFrom(
                       primary: maincolor,

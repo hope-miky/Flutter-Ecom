@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class SideBarWeb extends StatefulWidget {
-  BuildContext? ctx;
-  SideBarWeb({Key? key, this.ctx}) : super(key: key);
+  Function? onpressed;
+  SideBarWeb({Key? key, this.onpressed}) : super(key: key);
 
   @override
   _SideBarWebState createState() => _SideBarWebState();
@@ -13,7 +13,6 @@ class SideBarWeb extends StatefulWidget {
 
 class _SideBarWebState extends State<SideBarWeb> {
   bool dense = true;
-  final _innerRouterKey = GlobalKey<AutoRouterState>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +51,7 @@ class _SideBarWebState extends State<SideBarWeb> {
                         overflow: TextOverflow.ellipsis,
                       )
                     : null,
-                onTap: () {
-                  AutoRouter.of(context).pushNamed(e["route"] as String);
-                  // AutoRouter.innerRouterOf(widget.ctx!, e["route"] as String);
-                  final router = _innerRouterKey.currentState?.controller;
-                  // router?.push(const UsersRoute());
-                  // router.innerRouterOf(routeName)
-                },
+                onTap: () => widget.onpressed!(e["route"]),
               );
             }).toList(),
           ),
