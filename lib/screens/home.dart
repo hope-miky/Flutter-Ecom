@@ -1,5 +1,8 @@
+import 'package:addisecom/components/home_page/search_bar.dart';
+import 'package:addisecom/components/home_page/title.dart';
 import 'package:addisecom/components/menubutton.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +32,9 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-              )
+              ),
+              HomePageTitle(),
+              HomeSearchBar()
             ],
           ),
         ),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class MenuButton extends StatelessWidget {
-  final sm = 3.5.w;
-  final rad = 1.w;
+  final sm = 3.w;
+  final rad = 0.8.w;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 8.w,
-      width: 8.w,
+      height: 7.w,
+      width: 7.w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
