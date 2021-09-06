@@ -34,6 +34,9 @@ dependencies:
   intl: ^0.17.0
   google_fonts: ^2.1.0
   path_provider: ^2.0.3
+  cached_network_image: ^3.1.0
+  animated_bottom_navigation_bar: ^0.3.2
+  shimmer: ^2.0.0
 
 
 dev_dependencies:

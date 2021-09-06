@@ -1,4 +1,5 @@
 import 'package:addisecom/constants/products.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
@@ -28,11 +29,13 @@ class ProductCard extends StatelessWidget {
             width: 45.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3.w),
-              // color: Colors.red,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(product.imagepath!),
-              ),
+            ),
+            child: CachedNetworkImage(
+              imageUrl: product.imagepath!,
+              placeholder: (context, url) =>
+                  Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) =>
+                  Center(child: Icon(Icons.error)),
             ),
           ),
           SizedBox(
