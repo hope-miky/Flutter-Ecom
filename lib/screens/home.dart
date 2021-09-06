@@ -1,6 +1,8 @@
 import 'package:addisecom/components/home_page/search_bar.dart';
 import 'package:addisecom/components/home_page/title.dart';
 import 'package:addisecom/components/menubutton.dart';
+import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/screens/products/products.page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
@@ -34,10 +36,39 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               HomePageTitle(),
-              HomeSearchBar()
+              HomeSearchBar(),
+              ViewAllText(),
+              ProductsPage()
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ViewAllText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
+      width: 100.w,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "Popular Products",
+            style: GoogleFonts.poppins(
+              fontSize: 11.sp,
+            ),
+          ),
+          Text(
+            "View All ->",
+            style: GoogleFonts.poppins(
+              fontSize: 10.sp,
+            ),
+          ),
+        ],
       ),
     );
   }
