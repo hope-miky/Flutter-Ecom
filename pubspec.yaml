@@ -31,18 +31,14 @@ dependencies:
   google_nav_bar: ^5.0.5
   sizer: ^2.0.13
   flutter_signin_button: ^2.0.0
-  auto_route: ^2.3.0
   intl: ^0.17.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  auto_route_generator: ^2.3.0
   build_runner:
-  
-dependency_overrides:
-  meta: 1.7.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
