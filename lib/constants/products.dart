@@ -30,10 +30,12 @@ class Product {
   final String category;
   final String? imagepath;
   final int price;
+  bool liked;
 
   Product(
       {this.category = "Un categorized",
       this.imagepath,
       this.name = "",
+      this.liked = false,
       this.price = 0});
 }
