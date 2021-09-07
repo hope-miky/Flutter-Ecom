@@ -2,8 +2,12 @@ import 'package:addisecom/components/home_page/search_bar.dart';
 import 'package:addisecom/components/home_page/title.dart';
 import 'package:addisecom/components/menubutton.dart';
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/screens/histories/order_histories_page.dart';
+import 'package:addisecom/screens/landdingpage.dart';
+import 'package:addisecom/screens/products/all_products_page.dart';
 import 'package:addisecom/screens/products/new_arrival_products.dart';
 import 'package:addisecom/screens/products/products.page.dart';
+import 'package:addisecom/screens/profile/user_profile_page.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -21,35 +25,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _bottomNavIndex = 0;
+  List<Widget> _pages = [
+    LanddingPage(),
+    AllProductsPage(),
+    OrderHistoriesPage(),
+    ProfilePage()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MenuButton(),
-                    CircleAvatar(
-                      backgroundColor: Colors.red,
-                      radius: 6.w,
-                    )
-                  ],
-                ),
-              ),
-              HomePageTitle(),
-              HomeSearchBar(),
-              ViewAllText(),
-              ProductsPage(),
-              NewArivalText(),
-              NewArrivalProductsListPage()
-            ],
-          ),
-        ),
+        child: _pages[_bottomNavIndex],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -61,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: [Icons.search, Icons.store, Icons.list, Icons.account_box],
+        icons: [Icons.home, Icons.store, Icons.history, Icons.account_box],
         activeColor: Colors.teal,
         inactiveColor: Colors.grey,
         activeIndex: _bottomNavIndex,
