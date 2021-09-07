@@ -1,10 +1,13 @@
 import 'package:addisecom/components/home_page/search_bar.dart';
 import 'package:addisecom/components/home_page/title.dart';
 import 'package:addisecom/components/menubutton.dart';
+import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/screens/products/new_arrival_products.dart';
 import 'package:addisecom/screens/products/products.page.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
@@ -43,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               ViewAllText(),
               ProductsPage(),
               NewArivalText(),
-              ProductCardSmall()
+              NewArrivalProductsListPage()
             ],
           ),
         ),
@@ -53,11 +56,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.teal[400],
         onPressed: () {},
         child: Icon(
-          Icons.store_sharp,
+          FontAwesomeIcons.cartArrowDown,
+          size: 15.sp,
         ),
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: [Icons.search, Icons.store, Icons.list, Icons.account_box],
+        activeColor: Colors.teal,
+        inactiveColor: Colors.grey,
         activeIndex: _bottomNavIndex,
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
@@ -65,50 +71,6 @@ class _HomePageState extends State<HomePage> {
         rightCornerRadius: 32,
         onTap: (index) => setState(() => _bottomNavIndex = index),
         //other params
-      ),
-    );
-  }
-}
-
-class ProductCardSmall extends StatelessWidget {
-  const ProductCardSmall({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 15.h,
-      width: 70.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(3.w),
-        border: Border.all(
-          color: Colors.white,
-          width: 3.w,
-        ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            height: 15.h,
-            width: 25.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3.w),
-            ),
-            child: CachedNetworkImage(
-              imageUrl: "http://via.placeholder.com/350x150",
-              placeholder: (context, url) => Shimmer.fromColors(
-                child: Container(
-                  height: 15.h,
-                  width: 25.w,
-                  color: Colors.white,
-                ),
-                baseColor: Colors.white,
-                highlightColor: Colors.white24,
-              ),
-              errorWidget: (context, url, error) =>
-                  Center(child: Icon(Icons.error)),
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -27,13 +27,22 @@ class ProductCard extends StatelessWidget {
           Container(
             height: 23.h,
             width: 45.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3.w),
-            ),
+            decoration: BoxDecoration(),
             child: CachedNetworkImage(
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3.w),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              fit: BoxFit.cover,
               imageUrl: product.imagepath!,
-              placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
+              placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(),
+              ),
               errorWidget: (context, url, error) =>
                   Center(child: Icon(Icons.error)),
             ),

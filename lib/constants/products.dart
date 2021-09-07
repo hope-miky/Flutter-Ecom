@@ -21,7 +21,7 @@ var productlist = [
       category: "Home Appliance",
       imagepath:
           "https://cdn.pixabay.com/photo/2016/01/02/04/59/coffee-1117933_1280.jpg",
-      name: "Coffee Cap",
+      name: "Coffee Cup",
       price: 154),
 ];
 

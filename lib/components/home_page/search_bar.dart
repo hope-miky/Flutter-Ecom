@@ -11,7 +11,7 @@ class HomeSearchBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 65.w,
+            width: 70.w,
             child: TextField(
               decoration: InputDecoration(
                 fillColor: Colors.teal[50],
