@@ -1,6 +1,9 @@
 import 'package:addisecom/constants/categories.dart';
+import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/screens/products/product_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
@@ -19,7 +22,51 @@ class AllProductsPage extends StatelessWidget {
                 fontSize: 18.sp,
               ),
             ),
-            CategoriesList()
+            CategoriesList(),
+            SizedBox(
+              height: 1.h,
+            ),
+            // Container(
+            //   height: 90.h,
+            //   child: CustomScrollView(
+            //     primary: false,
+            //     slivers: <Widget>[
+            //       SliverPadding(
+            //         padding: const EdgeInsets.all(0),
+            //         sliver: SliverGrid.count(
+            //           crossAxisSpacing: 0,
+            //           mainAxisSpacing: 10,
+            //           crossAxisCount: 2,
+            //           childAspectRatio: 0.65,
+            //           children: productlist.map((e) => ProductCard(e)).toList(),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+
+            Container(
+              height: 90.h,
+              child: new StaggeredGridView.countBuilder(
+                crossAxisCount: 4,
+                itemCount: productlist.length,
+                itemBuilder: (BuildContext context, int index) => index != 1
+                    ? ProductCard(productlist[index])
+                    : Center(
+                        child: Text(
+                          "432 \nResults",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.sp,
+                          ),
+                        ),
+                      ),
+                staggeredTileBuilder: (int index) =>
+                    new StaggeredTile.count(2, index != 1 ? 3 : 1),
+                mainAxisSpacing: 4.0,
+                crossAxisSpacing: 4.0,
+              ),
+            ),
           ],
         ),
       ),
@@ -28,7 +75,7 @@ class AllProductsPage extends StatelessWidget {
 }
 
 class CategoriesList extends StatelessWidget {
-  String _selectedCat = "Electronics";
+  final String _selectedCat = "Electronics";
 
   @override
   Widget build(BuildContext context) {

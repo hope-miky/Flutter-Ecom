@@ -21,7 +21,7 @@ class _ProductCardState extends State<ProductCard> {
         Container(
           height: 35.h,
           width: 50.w,
-          margin: EdgeInsets.symmetric(horizontal: 4.w),
+          margin: EdgeInsets.symmetric(horizontal: 3.w),
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
