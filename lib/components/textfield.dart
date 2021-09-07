@@ -85,7 +85,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 1.h),
+      margin: EdgeInsets.symmetric(vertical: 1.h),
       child: TextFormField(
         focusNode: _focusNode,
         controller: widget.controller,
@@ -170,7 +170,9 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
               : Container(
                   width: 0,
                 ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
+          contentPadding: EdgeInsets.symmetric(
+              horizontal:
+                  SizerUtil.deviceType == DeviceType.mobile ? 5.w : 2.w),
           border: OutlineInputBorder(),
         ),
       ),
