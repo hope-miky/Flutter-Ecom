@@ -26,25 +26,6 @@ class AllProductsPage extends StatelessWidget {
             SizedBox(
               height: 1.h,
             ),
-            // Container(
-            //   height: 90.h,
-            //   child: CustomScrollView(
-            //     primary: false,
-            //     slivers: <Widget>[
-            //       SliverPadding(
-            //         padding: const EdgeInsets.all(0),
-            //         sliver: SliverGrid.count(
-            //           crossAxisSpacing: 0,
-            //           mainAxisSpacing: 10,
-            //           crossAxisCount: 2,
-            //           childAspectRatio: 0.65,
-            //           children: productlist.map((e) => ProductCard(e)).toList(),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
             Container(
               height: 90.h,
               child: new StaggeredGridView.countBuilder(
@@ -62,7 +43,7 @@ class AllProductsPage extends StatelessWidget {
                         ),
                       ),
                 staggeredTileBuilder: (int index) =>
-                    new StaggeredTile.count(2, index != 1 ? 3 : 1),
+                    new StaggeredTile.count(2, index != 1 ? 3.2 : 1),
                 mainAxisSpacing: 4.0,
                 crossAxisSpacing: 4.0,
               ),
