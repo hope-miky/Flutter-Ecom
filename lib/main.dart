@@ -1,4 +1,4 @@
-import 'package:addisecom/routes/routes.dart';
+import 'package:addisecom/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -9,14 +9,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var routes = Routes();
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: routes.ongeneratedroute,
-        );
-      },
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+      );
+    });
+
   }
 }

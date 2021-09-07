@@ -4,6 +4,7 @@ import 'package:addisecom/components/socialmedialogin.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -73,7 +74,15 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: maincolor, fontWeight: FontWeight.bold),
+                        ))
+                  ],
+
                 ),
                 SocialMediaLoginIcons(),
                 CustomSignInButton()

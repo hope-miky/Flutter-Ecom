@@ -1,7 +1,6 @@
 import 'package:addisecom/components/logo_text.dart';
 import 'package:addisecom/components/textfield.dart';
 import 'package:addisecom/constants/colors.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:addisecom/mixin/tefield_validation.dart';
 import 'package:sizer/sizer.dart';
@@ -126,20 +125,18 @@ class _SignupPageState extends State<SignupPage> with InputValidationMixin {
                             color: Colors.blueGrey,
                           ),
                         ),
-                        TextButton(
-                            onPressed: () {
-                              AutoRouter.of(context).pushNamed("/");
-                            },
-                            child: Text(
-                              "Sign in",
-                              style: TextStyle(
-                                  color: maincolor,
-                                  fontWeight: FontWeight.bold),
-                            ))
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Sign in",
+                            style: TextStyle(
+                                color: maincolor, fontWeight: FontWeight.bold),
+                          ))
+                    ],
+                  ),
+                ],
+
               ),
             ),
           ),
