@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         icons: [Icons.home, Icons.store, Icons.history, Icons.account_box],
         activeColor: Colors.teal,
         inactiveColor: Colors.grey,
+        splashColor: Colors.teal,
         activeIndex: _bottomNavIndex,
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
