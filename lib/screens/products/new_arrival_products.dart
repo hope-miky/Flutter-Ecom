@@ -1,5 +1,4 @@
 import 'package:addisecom/constants/products.dart';
-import 'package:addisecom/screens/home.dart';
 import 'package:addisecom/screens/products/product_card_small.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';

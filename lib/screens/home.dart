@@ -1,19 +1,11 @@
-import 'package:addisecom/components/home_page/search_bar.dart';
-import 'package:addisecom/components/home_page/title.dart';
-import 'package:addisecom/components/menubutton.dart';
-import 'package:addisecom/constants/products.dart';
 import 'package:addisecom/screens/histories/order_histories_page.dart';
 import 'package:addisecom/screens/landdingpage.dart';
 import 'package:addisecom/screens/products/all_products_page.dart';
-import 'package:addisecom/screens/products/new_arrival_products.dart';
-import 'package:addisecom/screens/products/products.page.dart';
 import 'package:addisecom/screens/profile/user_profile_page.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {

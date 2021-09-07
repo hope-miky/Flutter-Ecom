@@ -1,7 +1,6 @@
 import 'package:addisecom/constants/categories.dart';
 import 'package:addisecom/constants/products.dart';
 import 'package:addisecom/screens/products/product_card.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
