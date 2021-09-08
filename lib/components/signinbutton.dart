@@ -1,5 +1,4 @@
 import 'package:addisecom/constants/colors.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class CustomSignInButton extends StatelessWidget {
@@ -18,9 +17,7 @@ class CustomSignInButton extends StatelessWidget {
             ),
           ),
           TextButton(
-              onPressed: () {
-                AutoRouter.of(context).pushNamed("/signup-page");
-              },
+              onPressed: () {},
               child: Text(
                 "Sign up",
                 style: TextStyle(color: maincolor, fontWeight: FontWeight.bold),
