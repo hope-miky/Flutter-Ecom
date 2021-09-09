@@ -1,5 +1,6 @@
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/constants/reviews.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -225,10 +226,145 @@ class _ProductDetailsState extends State<ProductDetails> {
                         )
                       ],
                     ),
+                    SizedBox(
+                      height: 3.h,
+                    ),
+                    ExpansionTile(
+                      title: Text("See all reviews"),
+                      textColor: maincolor,
+                      children: reviewList
+                          .map((e) => ReviewCard(
+                                review: e,
+                              ))
+                          .toList(),
+                    )
                   ],
                 ),
               );
             },
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ReviewCard extends StatelessWidget {
+  Review? review;
+  ReviewCard({Key? key, this.review}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 5.w,
+            backgroundColor: Colors.white,
+            child: CachedNetworkImage(
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  // shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(3.w),
+                  border: Border.all(color: Colors.grey.withOpacity(.4)),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              fit: BoxFit.cover,
+              imageUrl: review!.authorimage,
+              placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) =>
+                  Center(child: Icon(Icons.error)),
+            ),
+          ),
+          SizedBox(
+            width: 4.w,
+          ),
+          Expanded(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        review!.name,
+                        style: GoogleFonts.poppins(
+                            fontSize: 11.sp, fontWeight: FontWeight.w500),
+                      ),
+                      Icon(
+                        Icons.more_horiz,
+                      )
+                    ],
+                  ),
+                  Text(
+                    review!.date,
+                    style: GoogleFonts.poppins(
+                      fontSize: 8.sp,
+                      color: Colors.teal,
+                    ),
+                  ),
+                  RatingBarIndicator(
+                    rating: review!.rating,
+                    itemBuilder: (context, index) => Icon(
+                      Icons.star,
+                      color: maincolor,
+                    ),
+                    itemCount: 5,
+                    itemSize: 11.sp,
+                    direction: Axis.horizontal,
+                  ),
+                  Text(
+                    review!.review,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                      fontSize: 9.sp,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      TextButton.icon(
+                        onPressed: () {},
+                        label: Text(
+                          "Like (2)",
+                          style: TextStyle(
+                            color: review!.liked ? Colors.red : Colors.grey,
+                          ),
+                        ),
+                        icon: Icon(
+                          Icons.thumb_up,
+                          size: 10.sp,
+                          color: review!.liked ? Colors.red : Colors.grey,
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        label: Text(
+                          "Replay",
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        icon: Icon(
+                          Icons.reply_all,
+                          size: 10.sp,
+                          color: Colors.grey,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),
