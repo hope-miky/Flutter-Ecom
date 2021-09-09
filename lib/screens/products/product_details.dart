@@ -230,6 +230,32 @@ class _ProductDetailsState extends State<ProductDetails> {
                       height: 3.h,
                     ),
                     ExpansionTile(
+                      title: Text("Product Descriptions"),
+                      textColor: maincolor,
+                      children: [
+                        ProductDescriptionProperty(
+                          property: "Brand",
+                          value: "NIKE",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Provider",
+                          value: "SomeFord LLC",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Color",
+                          value: "Black",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Weight",
+                          value: "12kg",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Description",
+                          value: "Some description about the product stuff.",
+                        ),
+                      ],
+                    ),
+                    ExpansionTile(
                       title: Text("See all reviews"),
                       textColor: maincolor,
                       children: reviewList
@@ -243,6 +269,55 @@ class _ProductDetailsState extends State<ProductDetails> {
               );
             },
           )
+        ],
+      ),
+    );
+  }
+}
+
+class ProductDescriptionProperty extends StatelessWidget {
+  final String property;
+  final String value;
+
+  const ProductDescriptionProperty({
+    Key? key,
+    this.property = "<property>",
+    this.value = "<value>",
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 0.25.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 25.w,
+            child: Text(
+              property + ":",
+              textAlign: TextAlign.right,
+              style: GoogleFonts.poppins(
+                fontSize: 10.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 4.w,
+          ),
+          Container(
+            width: 30.w,
+            child: Text(
+              value,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.poppins(
+                fontSize: 9.sp,
+                color: Colors.grey,
+              ),
+            ),
+          ),
         ],
       ),
     );
