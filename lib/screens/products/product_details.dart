@@ -55,8 +55,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     });
                   },
                   child: CircleAvatar(
-                    radius: 4.w,
-                    backgroundColor: Colors.white,
+                    radius: 5.w,
+                    backgroundColor: Colors.white.withOpacity(.7),
                     child: Center(
                       child: Icon(
                         !widget.product!.liked
@@ -72,17 +72,32 @@ class _ProductDetailsState extends State<ProductDetails> {
                 InkWell(
                   onTap: () {},
                   child: CircleAvatar(
-                    radius: 4.w,
-                    backgroundColor: Colors.white,
+                    radius: 5.w,
+                    backgroundColor: Colors.white.withOpacity(.7),
                     child: Center(
                       child: Icon(
-                        FontAwesomeIcons.cartPlus,
+                        FontAwesomeIcons.share,
                         size: 12.sp,
-                        color: Colors.red,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
-                )
+                ),
+                SizedBox(height: 2.h),
+                InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 5.w,
+                    backgroundColor: Colors.white.withOpacity(.7),
+                    child: Center(
+                      child: Icon(
+                        FontAwesomeIcons.save,
+                        size: 12.sp,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
