@@ -180,7 +180,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ],
                     ),
                     SizedBox(
-                      height: 3.h,
+                      height: 4.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
