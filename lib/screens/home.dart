@@ -83,9 +83,10 @@ class ViewAllText extends StatelessWidget {
             ),
           ),
           Text(
-            "View All ->",
+            "View All",
             style: GoogleFonts.poppins(
               fontSize: 10.sp,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],
