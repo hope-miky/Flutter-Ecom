@@ -1,6 +1,7 @@
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
 import 'package:addisecom/constants/reviews.dart';
+import 'package:addisecom/models/product_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -36,7 +37,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
               ),
               fit: BoxFit.cover,
-              imageUrl: widget.product!.imagepath!,
+              imageUrl:
+                  "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
               placeholder: (context, url) => Center(
                 child: CircularProgressIndicator(),
               ),
@@ -50,19 +52,20 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: Column(
               children: [
                 InkWell(
-                  onTap: () {
-                    setState(() {
-                      widget.product!.liked = !widget.product!.liked;
-                    });
-                  },
+                  // onTap: () {
+                  //   setState(() {
+                  //     widget.product!.liked = !widget.product!.liked;
+                  //   });
+                  // },
                   child: CircleAvatar(
                     radius: 5.w,
                     backgroundColor: Colors.white.withOpacity(.7),
                     child: Center(
                       child: Icon(
-                        !widget.product!.liked
-                            ? FontAwesomeIcons.heart
-                            : FontAwesomeIcons.solidHeart,
+                        // !widget.product!.liked
+                        //     ? FontAwesomeIcons.heart
+                        // :
+                        FontAwesomeIcons.solidHeart,
                         size: 12.sp,
                         color: Colors.red,
                       ),
@@ -134,7 +137,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                               ),
                               Text(
-                                widget.product!.category,
+                                "category",
                                 style: GoogleFonts.poppins(
                                     fontSize: 8.sp, color: Color(0xFF439DA3)),
                               ),

@@ -11,38 +11,38 @@ class AllProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          "Products",
-          style: GoogleFonts.poppins(
-            fontSize: 18.sp,
-          ),
-        ),
-        CategoriesList(),
-        SizedBox(
-          height: 1.h,
-        ),
-        Container(
-          height: 77.h,
-          child: new StaggeredGridView.countBuilder(
-            crossAxisCount: 4,
-            itemCount: productlist.length,
-            itemBuilder: (BuildContext context, int index) => index != 1
-                ? ProductCard(productlist[index])
-                : Center(
-                    child: Text(
-                      "432 \nResults",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.sp,
-                      ),
-                    ),
-                  ),
-            staggeredTileBuilder: (int index) =>
-                new StaggeredTile.count(2, index != 1 ? 3.2 : 1),
-            mainAxisSpacing: 4.0,
-            crossAxisSpacing: 4.0,
-          ),
-        ),
+        // Text(
+        //   "Products",
+        //   style: GoogleFonts.poppins(
+        //     fontSize: 18.sp,
+        //   ),
+        // ),
+        // CategoriesList(),
+        // SizedBox(
+        //   height: 1.h,
+        // ),
+        // Container(
+        //   height: 77.h,
+        //   child: new StaggeredGridView.countBuilder(
+        //     crossAxisCount: 4,
+        //     itemCount: productlist.length,
+        //     itemBuilder: (BuildContext context, int index) => index != 1
+        //         ? ProductCard(productlist[index])
+        //         : Center(
+        //             child: Text(
+        //               "432 \nResults",
+        //               style: TextStyle(
+        //                 fontWeight: FontWeight.bold,
+        //                 fontSize: 20.sp,
+        //               ),
+        //             ),
+        //           ),
+        //     staggeredTileBuilder: (int index) =>
+        //         new StaggeredTile.count(2, index != 1 ? 3.2 : 1),
+        //     mainAxisSpacing: 4.0,
+        //     crossAxisSpacing: 4.0,
+        //   ),
+        // ),
       ],
     );
   }

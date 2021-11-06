@@ -1,4 +1,5 @@
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/models/product_model.dart';
 import 'package:addisecom/screens/products/product_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,8 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                     ),
                     fit: BoxFit.cover,
-                    imageUrl: widget.product.imagepath!,
+                    imageUrl:
+                        "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
                     placeholder: (context, url) => Center(
                       child: CircularProgressIndicator(),
                     ),
@@ -70,10 +72,14 @@ class _ProductCardState extends State<ProductCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      widget.product.name,
-                      style: GoogleFonts.poppins(
-                        fontSize: 13.sp,
+                    Container(
+                      width: 33.w,
+                      child: Text(
+                        widget.product.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          fontSize: 11.sp,
+                        ),
                       ),
                     ),
                     Row(
@@ -97,7 +103,7 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
                 Text(
-                  widget.product.category,
+                  "category",
                   style: GoogleFonts.poppins(
                       fontSize: 8.sp, color: Color(0xFF439DA3)),
                 ),
@@ -112,7 +118,7 @@ class _ProductCardState extends State<ProductCard> {
           child: InkWell(
             onTap: () {
               setState(() {
-                widget.product.liked = !widget.product.liked;
+                // widget.product.liked = !widget.product.liked;
               });
             },
             child: CircleAvatar(
@@ -120,9 +126,7 @@ class _ProductCardState extends State<ProductCard> {
               backgroundColor: Colors.white,
               child: Center(
                 child: Icon(
-                  !widget.product.liked
-                      ? FontAwesomeIcons.heart
-                      : FontAwesomeIcons.solidHeart,
+                  FontAwesomeIcons.heart,
                   size: 12.sp,
                   color: Colors.red,
                 ),

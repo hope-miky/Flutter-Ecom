@@ -12,11 +12,11 @@ class Product {
   });
 
   final int id;
-  final int price;
+  final double price;
   final String name;
-  final int stock;
-  final int categoryId;
-  final Category category;
+  final double stock;
+  final int? categoryId;
+  final Category? category;
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
@@ -24,11 +24,13 @@ class Product {
 
   factory Product.fromMap(Map<String, dynamic> json) => Product(
         id: json["id"],
-        price: json["price"],
+        price: double.parse(json["price"].toString()),
         name: json["name"],
-        stock: json["stock"],
+        stock: double.parse(json["stock"].toString()),
         categoryId: json["CategoryId"],
-        category: Category.fromMap(json["Category"]),
+        category: json["Category"] == null
+            ? null
+            : Category.fromMap(json["Category"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -37,6 +39,6 @@ class Product {
         "name": name,
         "stock": stock,
         "CategoryId": categoryId,
-        "Category": category.toMap(),
+        "Category": category == null ? null : category!.toMap(),
       };
 }

@@ -1,4 +1,5 @@
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/models/product_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,7 +32,8 @@ class ProductCardSmall extends StatelessWidget {
             width: 25.w,
             decoration: BoxDecoration(),
             child: CachedNetworkImage(
-              imageUrl: product!.imagepath!,
+              imageUrl:
+                  "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(3.w),

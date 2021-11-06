@@ -52,9 +52,9 @@ class Cart extends StatelessWidget {
                         ),
                       ],
                     ),
-                    ...productlist.skip(4).map((e) => CartCard(
-                          product: e,
-                        )),
+                    // ...productlist.skip(4).map((e) => CartCard(
+                    //       product: e,
+                    //     )),
                     Divider(),
                     Container(
                       margin: EdgeInsets.symmetric(

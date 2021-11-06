@@ -13,12 +13,12 @@ class NewArrivalProductsListPage extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: productlist.reversed
-              .map((e) => ProductCardSmall(
-                    product: e,
-                  ))
-              .toList(),
-        ),
+            // children: productlist.reversed
+            //     .map((e) => ProductCardSmall(
+            //           product: e,
+            //         ))
+            //     .toList(),
+            ),
       ),
     );
   }
