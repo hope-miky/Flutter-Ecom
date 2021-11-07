@@ -57,13 +57,18 @@ class _ProductCardState extends State<ProductCard> {
                       ),
                     ),
                     fit: BoxFit.cover,
-                    imageUrl:
-                        "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
+                    imageUrl: widget.product.images.isEmpty
+                        ? ""
+                        : baseurl + widget.product.images[0],
                     placeholder: (context, url) => Center(
                       child: CircularProgressIndicator(),
                     ),
-                    errorWidget: (context, url, error) =>
-                        Center(child: Icon(Icons.error)),
+                    errorWidget: (context, url, error) => Center(
+                        child: Icon(
+                      Icons.image_outlined,
+                      size: 20.sp,
+                      color: Colors.teal,
+                    )),
                   ),
                 ),
                 SizedBox(
@@ -103,7 +108,9 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
                 Text(
-                  "category",
+                  widget.product.categoryId != null
+                      ? widget.product.category!.name
+                      : "Others",
                   style: GoogleFonts.poppins(
                       fontSize: 8.sp, color: Color(0xFF439DA3)),
                 ),

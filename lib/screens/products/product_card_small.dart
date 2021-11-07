@@ -33,7 +33,7 @@ class ProductCardSmall extends StatelessWidget {
             decoration: BoxDecoration(),
             child: CachedNetworkImage(
               imageUrl:
-                  "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
+                  product!.images.isEmpty ? "" : baseurl + product!.images[0],
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(3.w),
@@ -68,12 +68,13 @@ class ProductCardSmall extends StatelessWidget {
                 ),
                 Text(
                   product!.name,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
                     fontSize: 12.sp,
                   ),
                 ),
                 Text(
-                  "Some des about a product which is about 2 lines",
+                  product!.description ?? "",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
@@ -82,7 +83,9 @@ class ProductCardSmall extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "By: Sample Provider",
+                  product!.supplierId != null
+                      ? "By: ${product!.supplier!.fname}"
+                      : "unknown supplier",
                   style: GoogleFonts.poppins(
                     fontSize: 8.sp,
                     color: Color(0xFF439DA3),

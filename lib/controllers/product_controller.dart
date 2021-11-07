@@ -5,19 +5,28 @@ import 'package:get/get.dart';
 class ProductController extends GetxController {
   var count = 0.obs;
   var products = [].obs;
+  var newproducts = [].obs;
   final ApiService api = ApiService();
 
   Future fetchProducts() async {
     var response = await api.dio.get('products');
-    print(response.statusCode == 200);
     if (response.statusCode == 200) {
       var data = [];
-      print(response);
       for (var product in response.data) {
         data.add(Product.fromMap(product));
       }
       products.value = data;
-      print(products);
+    } else {}
+  }
+
+  Future fetchNewProducts() async {
+    var response = await api.dio.get('products/new');
+    if (response.statusCode == 200) {
+      var data = [];
+      for (var product in response.data) {
+        data.add(Product.fromMap(product));
+      }
+      newproducts.value = data;
     } else {}
   }
 }

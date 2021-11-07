@@ -1,36 +1,53 @@
 import 'package:addisecom/models/category_model.dart';
 import 'dart:convert';
 
+import 'package:addisecom/models/supplier_model.dart';
+
 class Product {
-  Product({
-    required this.id,
-    required this.price,
-    required this.name,
-    required this.stock,
-    required this.categoryId,
-    required this.category,
-  });
+  Product(
+      {required this.id,
+      required this.price,
+      required this.name,
+      required this.description,
+      required this.stock,
+      required this.images,
+      required this.categoryId,
+      required this.category,
+      required this.supplier,
+      required this.supplierId});
 
   final int id;
   final double price;
   final String name;
+  final String? description;
   final double stock;
+  final List<String> images;
   final int? categoryId;
+  final int? supplierId;
+  final Supplier? supplier;
   final Category? category;
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromMap(Map<String, dynamic> json) => Product(
-        id: json["id"],
-        price: double.parse(json["price"].toString()),
-        name: json["name"],
-        stock: double.parse(json["stock"].toString()),
-        categoryId: json["CategoryId"],
-        category: json["Category"] == null
+  factory Product.fromMap(Map<String, dynamic> jsondata) => Product(
+        id: jsondata["id"],
+        price: double.parse(jsondata["price"].toString()),
+        name: jsondata["name"],
+        description: jsondata["description"],
+        images: jsondata['images'] == ""
+            ? []
+            : jsondata['images'].toString().split(';'),
+        stock: double.parse(jsondata["stock"].toString()),
+        categoryId: jsondata["CategoryId"],
+        category: jsondata["Category"] == null
             ? null
-            : Category.fromMap(json["Category"]),
+            : Category.fromMap(jsondata["Category"]),
+        supplierId: jsondata["SupplierId"],
+        supplier: jsondata["Supplier"] == null
+            ? null
+            : Supplier.fromMap(jsondata["Supplier"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -40,5 +57,7 @@ class Product {
         "stock": stock,
         "CategoryId": categoryId,
         "Category": category == null ? null : category!.toMap(),
+        "SupplierId": supplierId,
+        "Supplier": supplier == null ? null : supplier!.toMap(),
       };
 }

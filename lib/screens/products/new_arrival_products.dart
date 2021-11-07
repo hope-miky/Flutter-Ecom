@@ -1,10 +1,14 @@
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/controllers/product_controller.dart';
 import 'package:addisecom/screens/products/product_card_small.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:sizer/sizer.dart';
 
 class NewArrivalProductsListPage extends StatelessWidget {
-  const NewArrivalProductsListPage({Key? key}) : super(key: key);
+  NewArrivalProductsListPage({Key? key}) : super(key: key);
+  final ProductController pc = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +16,15 @@ class NewArrivalProductsListPage extends StatelessWidget {
       width: 100.w,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Row(
-            // children: productlist.reversed
-            //     .map((e) => ProductCardSmall(
-            //           product: e,
-            //         ))
-            //     .toList(),
-            ),
+        child: Obx(
+          () => Row(
+            children: pc.newproducts.reversed
+                .map((e) => ProductCardSmall(
+                      product: e,
+                    ))
+                .toList(),
+          ),
+        ),
       ),
     );
   }
