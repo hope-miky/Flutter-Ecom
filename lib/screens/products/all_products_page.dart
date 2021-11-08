@@ -13,6 +13,10 @@ import 'package:sizer/sizer.dart';
 class AllProductsPage extends StatelessWidget {
   final ProductController pc = Get.put(ProductController());
 
+  filterCategory(Category category) async {
+    await pc.filterByCategory(category);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,38 +30,45 @@ class AllProductsPage extends StatelessWidget {
         SizedBox(
           height: 1.h,
         ),
-        CategoriesList(),
+        CategoriesList(
+          filter: filterCategory,
+        ),
         SizedBox(
           height: 1.h,
         ),
-        Container(
-          height: 76.h,
-          child: new StaggeredGridView.countBuilder(
-            crossAxisCount: 4,
-            itemCount: pc.products.length,
-            itemBuilder: (BuildContext context, int index) => index != 1
-                ? ProductCard(pc.products[index])
-                : Center(
-                    child: Text(
-                      "432 \nResults",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.sp,
+        Obx(
+          () => Container(
+            height: 76.h,
+            child: new StaggeredGridView.countBuilder(
+              crossAxisCount: 4,
+              itemCount: pc.products.length,
+              itemBuilder: (BuildContext context, int index) => index != 1
+                  ? ProductCard(pc.products[index])
+                  : Center(
+                      child: Text(
+                        "432 \nResults",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.sp,
+                        ),
                       ),
                     ),
-                  ),
-            staggeredTileBuilder: (int index) =>
-                new StaggeredTile.count(2, index != 1 ? 3.2 : 1),
-            mainAxisSpacing: 4.0,
-            crossAxisSpacing: 4.0,
+              staggeredTileBuilder: (int index) =>
+                  new StaggeredTile.count(2, index != 1 ? 3.2 : 1),
+              mainAxisSpacing: 4.0,
+              crossAxisSpacing: 4.0,
+            ),
           ),
-        ),
+        )
       ],
     );
   }
 }
 
 class CategoriesList extends StatefulWidget {
+  final Function filter;
+
+  CategoriesList({required this.filter});
   @override
   State<CategoriesList> createState() => _CategoriesListState();
 }
@@ -83,55 +94,45 @@ class _CategoriesListState extends State<CategoriesList> {
           () => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: cc.categories
-                .map((e) => CategoryWidget(
-                      category: e,
+                .map((category) => InkWell(
+                      onTap: () async {
+                        if (!category.filtered) {
+                          await cc.clearFilter();
+                          widget.filter(category);
+                        }
+                        setState(() {
+                          category.setfilterd(!category.filtered);
+                        });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 2.w),
+                        padding: EdgeInsets.symmetric(horizontal: 2.w),
+                        decoration: BoxDecoration(
+                          color: category.filtered == true
+                              ? Colors.teal
+                              : Colors.white,
+                          border: Border.all(
+                              color: category.filtered == true
+                                  ? Colors.teal
+                                  : Colors.black),
+                          borderRadius: BorderRadius.circular(1.w),
+                        ),
+                        child: Text(
+                          category.name,
+                          style: GoogleFonts.poppins(
+                            fontSize: 11.sp,
+                            color: category.filtered == true
+                                ? Colors.white
+                                : Colors.black,
+                            fontWeight: category.filtered == true
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
+                        ),
+                      ),
                     ))
                 .toList(),
           ),
         ));
-  }
-}
-
-class CategoryWidget extends StatefulWidget {
-  final Category category;
-  const CategoryWidget({required this.category});
-
-  @override
-  State<CategoryWidget> createState() => _CategoryWidgetState();
-}
-
-class _CategoryWidgetState extends State<CategoryWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          widget.category.setfilterd(!widget.category.filtered);
-        });
-      },
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 2.w),
-        padding: EdgeInsets.symmetric(horizontal: 2.w),
-        decoration: BoxDecoration(
-          color: widget.category.filtered == true ? Colors.teal : Colors.white,
-          border: Border.all(
-              color: widget.category.filtered == true
-                  ? Colors.teal
-                  : Colors.black),
-          borderRadius: BorderRadius.circular(1.w),
-        ),
-        child: Text(
-          widget.category.name,
-          style: GoogleFonts.poppins(
-            fontSize: 11.sp,
-            color:
-                widget.category.filtered == true ? Colors.white : Colors.black,
-            fontWeight: widget.category.filtered == true
-                ? FontWeight.bold
-                : FontWeight.normal,
-          ),
-        ),
-      ),
-    );
   }
 }

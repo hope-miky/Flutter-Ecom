@@ -6,6 +6,12 @@ class CategoriesController extends GetxController {
   var categories = [].obs;
   final ApiService api = ApiService();
 
+  Future clearFilter() async {
+    for (Category category in categories) {
+      category.setfilterd(false);
+    }
+  }
+
   Future fetchCategories() async {
     var response = await api.dio.get('category');
     if (response.statusCode == 200) {
