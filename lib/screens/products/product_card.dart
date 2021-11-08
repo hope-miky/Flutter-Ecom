@@ -78,12 +78,12 @@ class _ProductCardState extends State<ProductCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 33.w,
+                      width: 20.w,
                       child: Text(
                         widget.product.name,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
-                          fontSize: 11.sp,
+                          fontSize: 9.sp,
                         ),
                       ),
                     ),

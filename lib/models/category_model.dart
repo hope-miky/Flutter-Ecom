@@ -8,6 +8,7 @@ class Category {
     required this.description,
     required this.createdAt,
     required this.updatedAt,
+    this.filtered = false,
   });
 
   final int id;
@@ -16,6 +17,11 @@ class Category {
   final String description;
   final DateTime createdAt;
   final DateTime updatedAt;
+  bool filtered;
+
+  setfilterd(bool val) {
+    this.filtered = val;
+  }
 
   factory Category.fromJson(String str) => Category.fromMap(json.decode(str));
 
@@ -28,6 +34,7 @@ class Category {
         description: json["description"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+        filtered: false,
       );
 
   Map<String, dynamic> toMap() => {
