@@ -1,16 +1,21 @@
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/controllers/cart_controller.dart';
 import 'package:addisecom/models/product_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class CartCard extends StatelessWidget {
-  final Product? product;
+  final int productindex;
+  final Function recalculatePrice;
+  final CartController cac = Get.put(CartController());
 
-  CartCard({this.product});
+  CartCard({required this.productindex, required this.recalculatePrice});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +38,9 @@ class CartCard extends StatelessWidget {
             width: 20.w,
             decoration: BoxDecoration(),
             child: CachedNetworkImage(
-              imageUrl:
-                  "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
+              imageUrl: cac.products_in_cart[productindex].images.isEmpty
+                  ? ""
+                  : baseurl + cac.products_in_cart[productindex].images[0],
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(3.w),
@@ -68,7 +74,8 @@ class CartCard extends StatelessWidget {
                   height: 0.5.h,
                 ),
                 Text(
-                  product!.name,
+                  cac.products_in_cart[productindex].name,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
                     fontSize: 12.sp,
                   ),
@@ -81,7 +88,7 @@ class CartCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "\$${product!.price}",
+                  "\$${cac.products_in_cart[productindex].price}",
                   style: GoogleFonts.poppins(
                     fontSize: 9.sp,
                   ),
@@ -95,19 +102,39 @@ class CartCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(
-                  FontAwesomeIcons.plusCircle,
-                  color: Color(0xFF65D1D8),
-                ),
-                Text(
-                  "12",
-                  style: GoogleFonts.poppins(
-                    fontSize: 11.sp,
+                InkWell(
+                  onTap: () {
+                    // setState(() {
+                    cac.products_in_cart[productindex].cart++;
+                    // });
+                    recalculatePrice();
+                  },
+                  child: Icon(
+                    FontAwesomeIcons.plusCircle,
+                    color: Color(0xFF65D1D8),
                   ),
                 ),
-                Icon(
-                  FontAwesomeIcons.minusCircle,
-                  color: Colors.grey,
+                Obx(
+                  () => Text(
+                    cac.products_in_cart[productindex].cart.toString(),
+                    style: GoogleFonts.poppins(
+                      fontSize: 11.sp,
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    if (cac.products_in_cart[productindex].cart > 0) {
+                      // setState(() {
+                      cac.products_in_cart[productindex].cart--;
+                      // });
+                      recalculatePrice();
+                    }
+                  },
+                  child: Icon(
+                    FontAwesomeIcons.minusCircle,
+                    color: Colors.grey,
+                  ),
                 )
               ],
             ),

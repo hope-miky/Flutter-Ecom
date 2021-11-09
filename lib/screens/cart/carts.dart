@@ -1,12 +1,17 @@
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/controllers/cart_controller.dart';
 import 'package:addisecom/screens/cart/cart_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class Cart extends StatelessWidget {
-  const Cart({Key? key}) : super(key: key);
+  final CartController cac = Get.put(CartController());
+  void recalculatePrice() {
+    cac.calculateCost();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,52 +57,57 @@ class Cart extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // ...productlist.skip(4).map((e) => CartCard(
-                    //       product: e,
-                    //     )),
+                    Container(
+                      height: 35.h,
+                      child: ListView.builder(
+                        itemCount: cac.products_in_cart.length,
+                        itemBuilder: (context, index) {
+                          return CartCard(
+                            recalculatePrice: recalculatePrice,
+                            productindex: index,
+                          );
+                        },
+                      ),
+                    ),
                     Divider(),
                     Container(
                       margin: EdgeInsets.symmetric(
                         horizontal: 7.w,
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 2.h,
-                          ),
-                          Text(
-                            "Cost:     +\$3420",
-                            style: GoogleFonts.poppins(
-                              fontSize: 10.sp,
+                      child: Obx(
+                        () => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 2.h,
                             ),
-                          ),
-                          Text(
-                            "Tax:     +\$254",
-                            style: GoogleFonts.poppins(
-                              fontSize: 10.sp,
+                            Text(
+                              "Cost:     +\$${cac.totalCost}",
+                              style: GoogleFonts.poppins(
+                                fontSize: 10.sp,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Delivery:     +\$25",
-                            style: GoogleFonts.poppins(
-                              fontSize: 10.sp,
+                            Text(
+                              "Tax:     +\$${cac.totalCost * 0.15}",
+                              style: GoogleFonts.poppins(
+                                fontSize: 10.sp,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Discount:     -\$0",
-                            style: GoogleFonts.poppins(
-                              fontSize: 10.sp,
+                            Text(
+                              "Delivery:     +\$25",
+                              style: GoogleFonts.poppins(
+                                fontSize: 10.sp,
+                              ),
                             ),
-                          ),
-                          Divider(),
-                          Text(
-                            "Total:     +\$3420",
-                            style: GoogleFonts.poppins(
-                              fontSize: 13.sp,
+                            Divider(),
+                            Text(
+                              "Total:     +\$${cac.getfinalprice}",
+                              style: GoogleFonts.poppins(
+                                fontSize: 10.sp,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     Container(

@@ -10,6 +10,7 @@ class Product {
       required this.name,
       required this.description,
       required this.stock,
+      required this.cart,
       required this.images,
       required this.categoryId,
       required this.category,
@@ -22,6 +23,7 @@ class Product {
   final String? description;
   final double stock;
   final List<String> images;
+  int cart;
   final int? categoryId;
   final int? supplierId;
   final Supplier? supplier;
@@ -35,6 +37,7 @@ class Product {
         id: jsondata["id"],
         price: double.parse(jsondata["price"].toString()),
         name: jsondata["name"],
+        cart: 0,
         description: jsondata["description"],
         images: jsondata['images'] == ""
             ? []

@@ -1,9 +1,11 @@
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/controllers/cart_controller.dart';
 import 'package:addisecom/models/product_model.dart';
 import 'package:addisecom/screens/products/product_details.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,6 +18,8 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
+  final CartController cac = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -124,18 +128,28 @@ class _ProductCardState extends State<ProductCard> {
           top: 3.h,
           child: InkWell(
             onTap: () {
+              if (cac.product_ids_in_cart.contains(widget.product.id)) {
+                cac.removeProductFromCart(widget.product.id);
+              } else {
+                cac.addProductInCart(widget.product);
+              }
               setState(() {
                 // widget.product.liked = !widget.product.liked;
               });
             },
             child: CircleAvatar(
               radius: 4.w,
-              backgroundColor: Colors.white,
+              backgroundColor:
+                  cac.product_ids_in_cart.contains(widget.product.id)
+                      ? Colors.teal.withOpacity(.6)
+                      : Colors.white,
               child: Center(
                 child: Icon(
-                  FontAwesomeIcons.heart,
-                  size: 12.sp,
-                  color: Colors.red,
+                  FontAwesomeIcons.shopify,
+                  size: 11.sp,
+                  color: cac.product_ids_in_cart.contains(widget.product.id)
+                      ? Colors.white
+                      : Colors.grey,
                 ),
               ),
             ),
