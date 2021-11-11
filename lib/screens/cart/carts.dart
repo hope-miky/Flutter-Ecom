@@ -2,6 +2,7 @@ import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
 import 'package:addisecom/controllers/cart_controller.dart';
 import 'package:addisecom/screens/cart/cart_card.dart';
+import 'package:addisecom/screens/order/order.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -107,7 +108,9 @@ class Cart extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.h),
                       width: 100.w,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => OrderPage());
+                        },
                         style: ElevatedButton.styleFrom(
                           primary: maincolor,
                         ),

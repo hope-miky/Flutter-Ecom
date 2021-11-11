@@ -62,7 +62,7 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                     fit: BoxFit.cover,
                     imageUrl: widget.product.images.isEmpty
-                        ? ""
+                        ? imageurl
                         : baseurl + widget.product.images[0],
                     placeholder: (context, url) => Center(
                       child: CircularProgressIndicator(),

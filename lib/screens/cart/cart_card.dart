@@ -44,7 +44,7 @@ class CartCard extends StatelessWidget {
             decoration: BoxDecoration(),
             child: CachedNetworkImage(
               imageUrl: cac.products_in_cart[productindex].images.isEmpty
-                  ? ""
+                  ? imageurl
                   : baseurl + cac.products_in_cart[productindex].images[0],
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
