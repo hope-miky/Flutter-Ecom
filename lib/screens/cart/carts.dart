@@ -9,9 +9,6 @@ import 'package:sizer/sizer.dart';
 
 class Cart extends StatelessWidget {
   final CartController cac = Get.put(CartController());
-  void recalculatePrice() {
-    cac.calculateCost();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +60,9 @@ class Cart extends StatelessWidget {
                         itemCount: cac.products_in_cart.length,
                         itemBuilder: (context, index) {
                           return CartCard(
-                            recalculatePrice: recalculatePrice,
                             productindex: index,
+                            recalculatePrice: cac.calculateCost,
+                            addCartValue: cac.alterCartValue,
                           );
                         },
                       ),
@@ -82,26 +80,20 @@ class Cart extends StatelessWidget {
                               height: 2.h,
                             ),
                             Text(
-                              "Cost:     +\$${cac.totalCost}",
+                              "+ Cost:     \$ ${cac.totalCost}",
                               style: GoogleFonts.poppins(
                                 fontSize: 10.sp,
                               ),
                             ),
                             Text(
-                              "Tax:     +\$${cac.totalCost * 0.15}",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                            Text(
-                              "Delivery:     +\$25",
+                              "+ Delivery:     \$ 25",
                               style: GoogleFonts.poppins(
                                 fontSize: 10.sp,
                               ),
                             ),
                             Divider(),
                             Text(
-                              "Total:     +\$${cac.getfinalprice}",
+                              "Total:     +\$ ${cac.totalCost.value + 25}",
                               style: GoogleFonts.poppins(
                                 fontSize: 10.sp,
                               ),

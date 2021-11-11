@@ -13,9 +13,14 @@ import 'package:sizer/sizer.dart';
 class CartCard extends StatelessWidget {
   final int productindex;
   final Function recalculatePrice;
+  final Function addCartValue;
   final CartController cac = Get.put(CartController());
 
-  CartCard({required this.productindex, required this.recalculatePrice});
+  CartCard({
+    required this.productindex,
+    required this.recalculatePrice,
+    required this.addCartValue,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +109,8 @@ class CartCard extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    // setState(() {
-                    cac.products_in_cart[productindex].cart++;
-                    // });
+                    // cac.products_in_cart[].cart++;
+                    addCartValue(productindex, 1);
                     recalculatePrice();
                   },
                   child: Icon(
@@ -116,7 +120,7 @@ class CartCard extends StatelessWidget {
                 ),
                 Obx(
                   () => Text(
-                    cac.products_in_cart[productindex].cart.toString(),
+                    cac.getCartValue(productindex),
                     style: GoogleFonts.poppins(
                       fontSize: 11.sp,
                     ),
@@ -125,9 +129,8 @@ class CartCard extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     if (cac.products_in_cart[productindex].cart > 0) {
-                      // setState(() {
-                      cac.products_in_cart[productindex].cart--;
-                      // });
+                      // cac.products_in_cart[productindex].cart--;
+                      addCartValue(productindex, -1);
                       recalculatePrice();
                     }
                   },

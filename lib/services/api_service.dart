@@ -1,8 +1,9 @@
+import 'package:addisecom/constants/products.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
   final options = BaseOptions(
-    baseUrl: 'http://192.168.1.4:3000/',
+    baseUrl: baseurl,
     connectTimeout: 5000,
     receiveTimeout: 3000,
   );
