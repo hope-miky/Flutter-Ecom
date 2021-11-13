@@ -21,12 +21,12 @@ class AllProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          "Products",
-          style: GoogleFonts.poppins(
-            fontSize: 18.sp,
-          ),
-        ),
+        // Text(
+        //   "Products",
+        //   style: GoogleFonts.poppins(
+        //     fontSize: 18.sp,
+        //   ),
+        // ),
         SizedBox(
           height: 1.h,
         ),
@@ -38,7 +38,7 @@ class AllProductsPage extends StatelessWidget {
         ),
         Obx(
           () => Container(
-            height: 76.h,
+            height: 69.8.h,
             child: new StaggeredGridView.countBuilder(
               crossAxisCount: 4,
               itemCount: pc.products.length,

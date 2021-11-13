@@ -10,8 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class ProductDetails extends StatefulWidget {
-  final Product? product;
-  const ProductDetails({Key? key, this.product}) : super(key: key);
+  final Product product;
+  const ProductDetails({Key? key, required this.product}) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -36,9 +36,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ),
               ),
-              fit: BoxFit.cover,
-              imageUrl:
-                  "https://cdn.pixabay.com/photo/2017/05/08/02/22/game-2294201_1280.jpg",
+              fit: BoxFit.contain,
+              imageUrl: widget.product.images.isEmpty
+                  ? imageurl
+                  : baseurl + widget.product.images[0],
               placeholder: (context, url) => Center(
                 child: CircularProgressIndicator(),
               ),
@@ -108,7 +109,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           DraggableScrollableSheet(
             initialChildSize: 0.3,
             minChildSize: 0.3,
-            maxChildSize: 0.8,
+            maxChildSize: 0.3,
             builder: (BuildContext context, myscrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -129,15 +130,21 @@ class _ProductDetailsState extends State<ProductDetails> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.product!.name,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.w400,
+                              FittedBox(
+                                child: Text(
+                                  widget.product.name,
+                                  // maxLines: 1,
+                                  // overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                               ),
                               Text(
-                                "category",
+                                widget.product.category == null
+                                    ? "category"
+                                    : widget.product.category!.name,
                                 style: GoogleFonts.poppins(
                                     fontSize: 8.sp, color: Color(0xFF439DA3)),
                               ),
@@ -145,7 +152,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 height: 0.5.h,
                               ),
                               Text(
-                                "Some des about a product which is about 2 lines",
+                                widget.product.description ?? "",
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.poppins(
@@ -189,84 +196,86 @@ class _ProductDetailsState extends State<ProductDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "\$${widget.product!.price}",
+                          "\$${widget.product.price}",
                           style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Container(
-                          width: 30.w,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(
-                                FontAwesomeIcons.plus,
-                                size: 8.sp,
-                                color: Color(0xFF65D1D8),
-                              ),
-                              Text(
-                                "12",
-                                style: GoogleFonts.poppins(
-                                  fontSize: 11.sp,
-                                ),
-                              ),
-                              Icon(
-                                FontAwesomeIcons.minus,
-                                size: 8.sp,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   width: 30.w,
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //     children: [
+                        //       Icon(
+                        //         FontAwesomeIcons.plus,
+                        //         size: 8.sp,
+                        //         color: Color(0xFF65D1D8),
+                        //       ),
+                        //       Text(
+                        //         "12",
+                        //         style: GoogleFonts.poppins(
+                        //           fontSize: 11.sp,
+                        //         ),
+                        //       ),
+                        //       Icon(
+                        //         FontAwesomeIcons.minus,
+                        //         size: 8.sp,
+                        //         color: Colors.grey,
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: 5.w, vertical: 1.h),
                           decoration: BoxDecoration(
-                              color: maincolor,
-                              borderRadius: BorderRadius.circular(3.w)),
-                          child: Text("Cart"),
+                            color: maincolor,
+                            borderRadius: BorderRadius.circular(3.w),
+                          ),
+                          child: Text("Add to Cart"),
                         )
                       ],
                     ),
                     SizedBox(
                       height: 3.h,
                     ),
-                    ExpansionTile(
-                      title: Text("Product Descriptions"),
-                      textColor: maincolor,
-                      children: [
-                        ProductDescriptionProperty(
-                          property: "Brand",
-                          value: "NIKE",
-                        ),
-                        ProductDescriptionProperty(
-                          property: "Provider",
-                          value: "SomeFord LLC",
-                        ),
-                        ProductDescriptionProperty(
-                          property: "Color",
-                          value: "Black",
-                        ),
-                        ProductDescriptionProperty(
-                          property: "Weight",
-                          value: "12kg",
-                        ),
-                        ProductDescriptionProperty(
-                          property: "Description",
-                          value: "Some description about the product stuff.",
-                        ),
-                      ],
-                    ),
-                    ExpansionTile(
-                      title: Text("See all reviews"),
-                      textColor: maincolor,
-                      children: reviewList
-                          .map((e) => ReviewCard(
-                                review: e,
-                              ))
-                          .toList(),
-                    )
+                    // ExpansionTile(
+                    //   title: Text("Product Descriptions"),
+                    //   textColor: maincolor,
+                    //   children: [
+                    //     ProductDescriptionProperty(
+                    //       property: "Brand",
+                    //       value: "NIKE",
+                    //     ),
+                    //     ProductDescriptionProperty(
+                    //       property: "Provider",
+                    //       value: "SomeFord LLC",
+                    //     ),
+                    //     ProductDescriptionProperty(
+                    //       property: "Color",
+                    //       value: "Black",
+                    //     ),
+                    //     ProductDescriptionProperty(
+                    //       property: "Weight",
+                    //       value: "12kg",
+                    //     ),
+                    //     ProductDescriptionProperty(
+                    //       property: "Description",
+                    //       value: "Some description about the product stuff.",
+                    //     ),
+                    //   ],
+                    // ),
+
+                    // ExpansionTile(
+                    //   title: Text("See all reviews"),
+                    //   textColor: maincolor,
+                    //   children: reviewList
+                    //       .map((e) => ReviewCard(
+                    //             review: e,
+                    //           ))
+                    //       .toList(),
+                    // )
                   ],
                 ),
               );
