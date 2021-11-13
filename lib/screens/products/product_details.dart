@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
+import 'package:get/get.dart';
 
 class ProductDetails extends StatefulWidget {
   final Product product;
@@ -104,6 +105,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            top: 7.h,
+            left: 5.w,
+            child: InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: CircleAvatar(
+                radius: 5.w,
+                backgroundColor: Colors.white.withOpacity(.9),
+                child: Center(
+                  child: Icon(
+                    FontAwesomeIcons.arrowLeft,
+                    size: 12.sp,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
             ),
           ),
           DraggableScrollableSheet(
