@@ -7,8 +7,16 @@ class CartController extends GetxController {
   var product_ids_in_cart = [].obs;
   var totalCost = 0.0.obs;
 
+  get cart_elements => product_ids_in_cart.length;
+
   getCartValue(index) {
     return products_in_cart[index].cart.toString();
+  }
+
+  clearCart() {
+    products_in_cart.value = [];
+    product_ids_in_cart.value = [];
+    totalCost.value = 0;
   }
 
   addProductInCart(Product product) {

@@ -1,5 +1,6 @@
 import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
+import 'package:addisecom/controllers/cart_controller.dart';
 import 'package:addisecom/screens/cart/carts.dart';
 import 'package:addisecom/screens/cart/cart_card.dart';
 import 'package:addisecom/screens/histories/order_histories_page.dart';
@@ -7,8 +8,10 @@ import 'package:addisecom/screens/landdingpage.dart';
 import 'package:addisecom/screens/products/all_products_page.dart';
 import 'package:addisecom/screens/profile/user_profile_page.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
@@ -20,6 +23,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final CartController cac = Get.put(CartController());
+
   int _bottomNavIndex = 0;
   List<Widget> _pages = [
     LanddingPage(),
@@ -27,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     OrderHistoriesPage(),
     ProfilePage()
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,20 +40,28 @@ class _HomePageState extends State<HomePage> {
         child: _pages[_bottomNavIndex],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.teal[400],
-        onPressed: () {
-          showDialog(
-              context: context,
-              barrierDismissible: false,
-              useSafeArea: true,
-              builder: (context) {
-                return Cart();
-              });
-        },
-        child: Icon(
-          FontAwesomeIcons.cartArrowDown,
-          size: 15.sp,
+      floatingActionButton: Badge(
+        badgeContent: Obx(() => Text(
+              cac.cart_elements.toString(),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+        child: FloatingActionButton(
+          backgroundColor: maincolor,
+          onPressed: () {
+            showDialog(
+                context: context,
+                barrierDismissible: false,
+                useSafeArea: true,
+                builder: (context) {
+                  return Cart();
+                });
+          },
+          child: Icon(
+            FontAwesomeIcons.cartArrowDown,
+          ),
         ),
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar(
