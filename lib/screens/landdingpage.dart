@@ -2,6 +2,7 @@ import 'package:addisecom/components/home_page/search_bar.dart';
 import 'package:addisecom/components/home_page/title.dart';
 import 'package:addisecom/components/menubutton.dart';
 import 'package:addisecom/controllers/product_controller.dart';
+import 'package:addisecom/screens/categories/categories.web.dart';
 import 'package:addisecom/screens/home.dart';
 import 'package:addisecom/screens/products/new_arrival_products.dart';
 import 'package:addisecom/screens/products/products.page.dart';
@@ -52,9 +53,12 @@ class _LanddingPageState extends State<LanddingPage> {
           //   height: 7.h,
           // ),
           HomePageTitle(),
-          HomeSearchBar(),
+          // HomeSearchBar(),
+          // CategoryAvatars(),
+
           ViewAllText(),
           ProductsPage(),
+          CategoryAvatars(),
           NewArivalText(),
           NewArrivalProductsListPage()
         ],

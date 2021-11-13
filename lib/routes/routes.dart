@@ -45,9 +45,9 @@ class Routes {
         page = ItemsWeb();
         break;
 
-      case categories:
-        page = CategoriesWeb();
-        break;
+      // case categories:
+      //   page = CategoriesWeb();
+      //   break;
       case dashboard:
         page = DashboardWeb();
         break;
