@@ -6,11 +6,16 @@ class HomePageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 7.w, vertical: 1.h),
+      margin: EdgeInsets.symmetric(
+        horizontal: 7.w,
+      ),
       width: 100.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 5.h,
+          ),
           Text(
             "Best deals",
             style: GoogleFonts.poppins(
@@ -21,8 +26,10 @@ class HomePageTitle extends StatelessWidget {
             "Great products",
             style: GoogleFonts.poppins(
               fontSize: 15.sp,
-              // fontWeight: FontWeight.w600,
             ),
+          ),
+          SizedBox(
+            height: 2.h,
           ),
         ],
       ),

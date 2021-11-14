@@ -32,8 +32,8 @@ class _ProductCardState extends State<ProductCard> {
                     )));
           },
           child: Container(
-            height: 35.h,
-            width: 50.w,
+            height: 30.h,
+            width: 45.w,
             margin: EdgeInsets.symmetric(horizontal: 3.w),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -41,13 +41,13 @@ class _ProductCardState extends State<ProductCard> {
                 color: Colors.white,
                 width: 3.w,
               ),
-              borderRadius: BorderRadius.circular(6.w),
+              borderRadius: BorderRadius.circular(4.w),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 23.h,
+                  height: 20.h,
                   width: 45.w,
                   decoration: BoxDecoration(),
                   child: CachedNetworkImage(

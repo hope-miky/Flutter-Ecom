@@ -1,9 +1,11 @@
 import 'package:addisecom/constants/categories.dart';
+import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
 import 'package:addisecom/controllers/categories_controller.dart';
 import 'package:addisecom/controllers/product_controller.dart';
 import 'package:addisecom/models/category_model.dart';
 import 'package:addisecom/screens/products/product_card.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
@@ -21,12 +23,29 @@ class AllProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Text(
-        //   "Products",
-        //   style: GoogleFonts.poppins(
-        //     fontSize: 18.sp,
-        //   ),
-        // ),
+        AppBar(
+          backgroundColor: Colors.white12,
+          elevation: 0,
+          title: TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.search),
+              prefixIconConstraints: BoxConstraints(
+                minWidth: 10.w,
+              ),
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 1.h,
+                horizontal: 3.w,
+              ),
+              isDense: true,
+              border: OutlineInputBorder(),
+            ),
+          ),
+          actions: [
+            SizedBox(
+              width: 7.w,
+            )
+          ],
+        ),
         SizedBox(
           height: 1.h,
         ),
@@ -37,8 +56,7 @@ class AllProductsPage extends StatelessWidget {
           height: 1.h,
         ),
         Obx(
-          () => Container(
-            height: 69.8.h,
+          () => Expanded(
             child: new StaggeredGridView.countBuilder(
               crossAxisCount: 4,
               itemCount: pc.products.length,
@@ -54,8 +72,7 @@ class AllProductsPage extends StatelessWidget {
                       ),
                     ),
               staggeredTileBuilder: (int index) =>
-                  new StaggeredTile.count(2, index != 1 ? 3.2 : 1),
-              mainAxisSpacing: 4.0,
+                  new StaggeredTile.count(2, index != 1 ? 3 : 1),
               crossAxisSpacing: 4.0,
             ),
           ),

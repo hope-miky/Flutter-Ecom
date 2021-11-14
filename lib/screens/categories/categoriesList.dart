@@ -68,7 +68,7 @@ class CategoryAvatars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 2.w),
+      padding: EdgeInsets.only(left: 2.w, right: 2.w, top: 3.h),
       child: Container(
         width: 100.w,
         height: 10.h,

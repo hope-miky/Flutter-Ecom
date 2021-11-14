@@ -36,37 +36,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white12,
-        elevation: 0,
-        actions: [
-          Icon(
-            Icons.language,
-            color: maincolor,
-          ),
-          SizedBox(
-            width: 3.w,
-          ),
-          Center(
-            child: Badge(
-              badgeContent: Text(
-                '',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              child: Icon(
-                Icons.notifications_none_outlined,
-                color: maincolor,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 7.w,
-          )
-        ],
-      ),
       body: SafeArea(
         child: _pages[_bottomNavIndex],
       ),

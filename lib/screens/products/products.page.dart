@@ -12,7 +12,7 @@ class ProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 100.w,
-      height: 35.h,
+      height: 30.h,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Obx(() => Row(
