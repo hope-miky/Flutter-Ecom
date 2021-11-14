@@ -150,6 +150,7 @@ class OrderPage extends StatelessWidget {
                       phonenum: _phonenumcontroller.text,
                       city: _citycontroller.text,
                       address: _addresscontroller.text,
+                      total_cost: cac.totalCost.value + 25,
                     );
                   },
                   style: ElevatedButton.styleFrom(

@@ -14,7 +14,8 @@ class OrderController extends GetxController {
   var prd = Get.find<CartController>().products_in_cart;
   final ApiService api = ApiService();
 
-  Future placeAnOrder({fullname, phonenum, city, address, email}) async {
+  Future placeAnOrder(
+      {fullname, phonenum, city, address, email, total_cost}) async {
     var products = [];
 
     for (Product product in prd)
@@ -25,7 +26,8 @@ class OrderController extends GetxController {
       'customer_name': fullname,
       'customer_phonenum': phonenum,
       'customer_address': address,
-      'customer_city': city
+      'customer_city': city,
+      'total_cost': total_cost
     };
 
     var response = await api.dio.post('orders', data: order);

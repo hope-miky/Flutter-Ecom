@@ -1,5 +1,5 @@
 import 'package:addisecom/screens/accounts/accounts.web.dart';
-import 'package:addisecom/screens/categories/categories.web.dart';
+import 'package:addisecom/screens/categories/categoriesList.dart';
 import 'package:addisecom/screens/login.dart';
 import 'package:addisecom/screens/web/dashboard/dashboard.web.dart';
 import 'package:addisecom/screens/web/items/items.web.dart';

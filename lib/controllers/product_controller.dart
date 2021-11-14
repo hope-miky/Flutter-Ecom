@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 class ProductController extends GetxController {
   var count = 0.obs;
   var products = [].obs;
+  var productincategory = [].obs;
   var newproducts = [].obs;
   var filter = {}.obs;
 
@@ -57,6 +58,26 @@ class ProductController extends GetxController {
         }
         products.assignAll(data);
       }
+    }
+  }
+
+  Future productsInCategory(int id) async {
+    filter.value = {};
+    filter['CategoryId'] = id;
+    var response = await api.dio.get(
+      'products',
+      queryParameters: {
+        'filters': json.encode(filter),
+      },
+    );
+
+    //
+    if (response.statusCode == 200) {
+      var data = [];
+      for (var product in response.data) {
+        data.add(Product.fromMap(product));
+      }
+      productincategory.assignAll(data);
     }
   }
 }
