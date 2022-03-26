@@ -14,8 +14,8 @@ class Supplier {
     required this.address1,
     required this.address2,
     required this.phonenum,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
   final int id;
@@ -30,8 +30,8 @@ class Supplier {
   final dynamic address1;
   final dynamic address2;
   final String phonenum;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   factory Supplier.fromJson(String str) => Supplier.fromMap(json.decode(str));
 
@@ -67,7 +67,7 @@ class Supplier {
         "address1": address1,
         "address2": address2,
         "phonenum": phonenum,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt!.toIso8601String(),
+        "updatedAt": updatedAt!.toIso8601String(),
       };
 }

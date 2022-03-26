@@ -13,24 +13,25 @@ class CategoriesController extends GetxController {
   }
 
   Future fetchCategories() async {
-    var response = await api.dio.get('category');
-    if (response.statusCode == 200) {
-      var data = [];
-      for (var category in response.data) {
-        data.add(Category.fromMap(category));
-      }
-      data.insert(
-        0,
-        new Category(
-          id: 0,
-          name: "All",
-          active: true,
-          description: "description",
-          createdAt: DateTime.now(),
-          updatedAt: DateTime.now(),
-        ),
-      );
-      categories.value = data;
-    } else {}
+    categories.value = categories;
+    // var response = await api.dio.get('category');
+    // if (response.statusCode == 200) {
+    //   var data = [];
+    //   for (var category in response.data) {
+    //     data.add(Category.fromMap(category));
+    //   }
+    //   data.insert(
+    //     0,
+    //     new Category(
+    //       id: 0,
+    //       name: "All",
+    //       active: true,
+    //       description: "description",
+    //       createdAt: DateTime.now(),
+    //       updatedAt: DateTime.now(),
+    //     ),
+    //   );
+    //   categories.value = data;
+    // } else {}
   }
 }

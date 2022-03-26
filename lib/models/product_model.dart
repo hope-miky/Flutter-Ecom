@@ -4,18 +4,21 @@ import 'dart:convert';
 import 'package:addisecom/models/supplier_model.dart';
 
 class Product {
-  Product(
-      {required this.id,
-      required this.price,
-      required this.name,
-      required this.description,
-      required this.stock,
-      required this.cart,
-      required this.images,
-      required this.categoryId,
-      required this.category,
-      required this.supplier,
-      required this.supplierId});
+  Product({
+    required this.id,
+    required this.price,
+    required this.name,
+    required this.description,
+    required this.stock,
+    // required this.cart,
+    required this.images,
+    required this.categoryId,
+    required this.category,
+    required this.supplier,
+    required this.supplierId,
+  }) {
+    this.cart = 0;
+  }
 
   final int id;
   final double price;
@@ -23,7 +26,7 @@ class Product {
   final String? description;
   final double stock;
   final List<String> images;
-  int cart;
+  int? cart;
   final int? categoryId;
   final int? supplierId;
   final Supplier? supplier;
@@ -37,7 +40,6 @@ class Product {
         id: jsondata["id"],
         price: double.parse(jsondata["price"].toString()),
         name: jsondata["name"],
-        cart: 0,
         description: jsondata["description"],
         images: jsondata['images'] == ""
             ? []

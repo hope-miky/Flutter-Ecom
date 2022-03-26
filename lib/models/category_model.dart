@@ -6,8 +6,9 @@ class Category {
     required this.name,
     required this.active,
     required this.description,
-    required this.createdAt,
-    required this.updatedAt,
+    required this.images,
+    this.createdAt,
+    this.updatedAt,
     this.filtered = false,
   });
 
@@ -15,8 +16,9 @@ class Category {
   final String name;
   final bool active;
   final String description;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final String images;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
   bool filtered;
 
   setfilterd(bool val) {
@@ -31,6 +33,7 @@ class Category {
         id: json["id"],
         name: json["name"],
         active: json["active"],
+        images: json["images"],
         description: json["description"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
@@ -41,8 +44,9 @@ class Category {
         "id": id,
         "name": name,
         "active": active,
+        "images": images,
         "description": description,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt ?? createdAt!.toIso8601String(),
+        "updatedAt": updatedAt ?? updatedAt!.toIso8601String(),
       };
 }

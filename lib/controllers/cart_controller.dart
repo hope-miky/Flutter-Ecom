@@ -39,7 +39,7 @@ class CartController extends GetxController {
   calculateCost() {
     var total = 0.0;
     for (Product product in products_in_cart) {
-      total += (product.price * product.cart);
+      total += (product.price * product.cart!);
     }
     print(total);
     totalCost.value = total;
