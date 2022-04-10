@@ -35,29 +35,7 @@ class _LanddingPageState extends State<LanddingPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Container(
-          //   margin: EdgeInsets.symmetric(
-          //     horizontal: 10.w,
-          //   ),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       MenuButton(),
-          //       CircleAvatar(
-          //         backgroundColor: Colors.red,
-          //         radius: 6.w,
-          //       )
-          //     ],
-          //   ),
-          // ),
-
-          // SizedBox(
-          //   height: 7.h,
-          // ),
           HomePageTitle(),
-          // HomeSearchBar(),
-          // CategoryAvatars(),
-
           ViewAllText(),
           ProductsPage(),
           CategoryAvatars(),

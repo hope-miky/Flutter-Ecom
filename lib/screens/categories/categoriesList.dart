@@ -39,12 +39,7 @@ class CatAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Get.to(() => ProductsInCategory(
-              categoryId: category.id,
-              title: category.name,
-            ));
-      },
+      onTap: () {},
       child: Container(
           margin: EdgeInsets.symmetric(horizontal: 2.w),
           width: 20.w,
