@@ -2,5 +2,5 @@
 
 Free and OpenSourse Ecommerce UI for everyone
 
-![Ecom](./docs/design/AddisEcom_v2.png)
+![Ecom](./docs/design/ui_design.png)
 
