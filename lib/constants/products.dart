@@ -36,15 +36,15 @@ var sampleProducts = [
       supplierId: 2),
   new Product(
       id: 3,
-      price: 200,
-      name: "somthing name",
+      price: 200000,
+      name: "Fully furnished House",
       description: "description",
       stock: 200,
       images: [
         'https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg'
       ],
-      categoryId: 1,
-      category: sampleCategories[0],
+      categoryId: 7,
+      category: sampleCategories[6],
       supplier: suppliers[2],
       supplierId: 3),
   new Product(

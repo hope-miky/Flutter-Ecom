@@ -18,7 +18,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  final CartController cac = Get.put(CartController());
+  // final CartController cac = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _ProductCardState extends State<ProductCard> {
                     fit: BoxFit.cover,
                     imageUrl: widget.product.images.isEmpty
                         ? imageurl
-                        : baseurl + widget.product.images[0],
+                        : widget.product.images[0],
                     placeholder: (context, url) => Center(
                       child: CircularProgressIndicator(),
                     ),
@@ -82,7 +82,7 @@ class _ProductCardState extends State<ProductCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 20.w,
+                      width: 25.w,
                       child: Text(
                         widget.product.name,
                         overflow: TextOverflow.ellipsis,
@@ -127,29 +127,20 @@ class _ProductCardState extends State<ProductCard> {
           right: 9.w,
           top: 3.h,
           child: InkWell(
-            onTap: () {
-              if (cac.product_ids_in_cart.contains(widget.product.id)) {
-                cac.removeProductFromCart(widget.product.id);
-              } else {
-                cac.addProductInCart(widget.product);
-              }
-              setState(() {
-                // widget.product.liked = !widget.product.liked;
-              });
-            },
+            onTap: () {},
             child: CircleAvatar(
               radius: 4.w,
-              backgroundColor:
-                  cac.product_ids_in_cart.contains(widget.product.id)
-                      ? Colors.teal.withOpacity(.6)
-                      : Colors.white,
+              // backgroundColor:
+              //     cac.product_ids_in_cart.contains(widget.product.id)
+              //         ? Colors.teal.withOpacity(.6)
+              //         : Colors.white,
               child: Center(
                 child: Icon(
                   FontAwesomeIcons.shopify,
                   size: 11.sp,
-                  color: cac.product_ids_in_cart.contains(widget.product.id)
-                      ? Colors.white
-                      : Colors.grey,
+                  // color: cac.product_ids_in_cart.contains(widget.product.id)
+                  //     ? Colors.white
+                  //     : Colors.grey,
                 ),
               ),
             ),

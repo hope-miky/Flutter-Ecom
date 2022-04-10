@@ -71,7 +71,7 @@ class CatAvatar extends StatelessWidget {
               SizedBox(
                 height: 1.h,
               ),
-              Text(category.name ?? ""),
+              Text(category.name),
             ],
           )),
     );

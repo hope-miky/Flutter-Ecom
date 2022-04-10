@@ -32,9 +32,7 @@ class ProductCardSmall extends StatelessWidget {
             width: 25.w,
             decoration: BoxDecoration(),
             child: CachedNetworkImage(
-              imageUrl: product!.images.isEmpty
-                  ? imageurl
-                  : baseurl + product!.images[0],
+              imageUrl: product!.images.isEmpty ? imageurl : product!.images[0],
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(3.w),

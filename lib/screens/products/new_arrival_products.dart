@@ -8,7 +8,6 @@ import 'package:sizer/sizer.dart';
 
 class NewArrivalProductsListPage extends StatelessWidget {
   NewArrivalProductsListPage({Key? key}) : super(key: key);
-  final ProductController pc = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +15,12 @@ class NewArrivalProductsListPage extends StatelessWidget {
       width: 100.w,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Obx(
-          () => Row(
-            children: pc.newproducts.reversed
-                .map((e) => ProductCardSmall(
-                      product: e,
-                    ))
-                .toList(),
-          ),
+        child: Row(
+          children: sampleProducts.reversed
+              .map((e) => ProductCardSmall(
+                    product: e,
+                  ))
+              .toList(),
         ),
       ),
     );

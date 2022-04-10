@@ -20,8 +20,8 @@ class LanddingPage extends StatefulWidget {
 class _LanddingPageState extends State<LanddingPage> {
   final ProductController pc = Get.put(ProductController());
   fetchProducts() async {
-    await pc.fetchProducts();
-    await pc.fetchNewProducts();
+    // await pc.fetchProducts();
+    // await pc.fetchNewProducts();
   }
 
   @override
