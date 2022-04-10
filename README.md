@@ -1,3 +1,6 @@
-# addisecom
+# Made with Flutter
 
-My new Flutter project.
+Free and OpenSourse Ecommerce UI for everyone
+
+![Ecom](./docs/design/AddisEcom_v2.png)
+
