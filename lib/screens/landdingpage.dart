@@ -36,7 +36,9 @@ class _LanddingPageState extends State<LanddingPage> {
       child: Column(
         children: [
           // Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
+          //   margin: EdgeInsets.symmetric(
+          //     horizontal: 10.w,
+          //   ),
           //   child: Row(
           //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
           //     children: [

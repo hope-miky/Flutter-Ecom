@@ -40,7 +40,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               fit: BoxFit.contain,
               imageUrl: widget.product.images.isEmpty
                   ? imageurl
-                  : baseurl + widget.product.images[0],
+                  : widget.product.images[0],
               placeholder: (context, url) => Center(
                 child: CircularProgressIndicator(),
               ),
@@ -128,24 +128,26 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.3,
-            minChildSize: 0.3,
-            maxChildSize: 0.3,
+            initialChildSize: 0.2,
+            minChildSize: 0.2,
+            maxChildSize: 0.7,
             builder: (BuildContext context, myscrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.w),
+                  borderRadius: BorderRadius.circular(7.w),
                 ),
                 child: ListView(
                   controller: myscrollController,
+                  padding: EdgeInsets.only(top: 4.w),
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
+                          // color: Colors.green,
                           width: 45.w,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,7 +169,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     ? "category"
                                     : widget.product.category!.name,
                                 style: GoogleFonts.poppins(
-                                    fontSize: 8.sp, color: Color(0xFF439DA3)),
+                                    fontSize: 10.sp,
+                                    color: Color.fromARGB(255, 16, 61, 64)),
                               ),
                               SizedBox(
                                 height: 0.5.h,
@@ -211,7 +214,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ],
                     ),
                     SizedBox(
-                      height: 4.h,
+                      height: 1.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -261,42 +264,41 @@ class _ProductDetailsState extends State<ProductDetails> {
                     SizedBox(
                       height: 3.h,
                     ),
-                    // ExpansionTile(
-                    //   title: Text("Product Descriptions"),
-                    //   textColor: maincolor,
-                    //   children: [
-                    //     ProductDescriptionProperty(
-                    //       property: "Brand",
-                    //       value: "NIKE",
-                    //     ),
-                    //     ProductDescriptionProperty(
-                    //       property: "Provider",
-                    //       value: "SomeFord LLC",
-                    //     ),
-                    //     ProductDescriptionProperty(
-                    //       property: "Color",
-                    //       value: "Black",
-                    //     ),
-                    //     ProductDescriptionProperty(
-                    //       property: "Weight",
-                    //       value: "12kg",
-                    //     ),
-                    //     ProductDescriptionProperty(
-                    //       property: "Description",
-                    //       value: "Some description about the product stuff.",
-                    //     ),
-                    //   ],
-                    // ),
-
-                    // ExpansionTile(
-                    //   title: Text("See all reviews"),
-                    //   textColor: maincolor,
-                    //   children: reviewList
-                    //       .map((e) => ReviewCard(
-                    //             review: e,
-                    //           ))
-                    //       .toList(),
-                    // )
+                    ExpansionTile(
+                      title: Text("Product Descriptions"),
+                      textColor: maincolor,
+                      children: [
+                        ProductDescriptionProperty(
+                          property: "Brand",
+                          value: "NIKE",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Provider",
+                          value: "SomeFord LLC",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Color",
+                          value: "Black",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Weight",
+                          value: "12kg",
+                        ),
+                        ProductDescriptionProperty(
+                          property: "Description",
+                          value: "Some description about the product stuff.",
+                        ),
+                      ],
+                    ),
+                    ExpansionTile(
+                      title: Text("See all reviews"),
+                      textColor: maincolor,
+                      children: reviewList
+                          .map((e) => ReviewCard(
+                                review: e,
+                              ))
+                          .toList(),
+                    )
                   ],
                 ),
               );

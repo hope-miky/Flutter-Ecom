@@ -57,4 +57,10 @@ var sampleCategories = [
       images:
           "https://cdn.pixabay.com/photo/2015/02/05/08/12/stock-624712_1280.jpg",
       description: "description"),
+  Category(
+      id: 9,
+      name: "Furniture",
+      active: true,
+      images: "https://m.media-amazon.com/images/I/61VjnFn9sEL._SX679_.jpg",
+      description: "description"),
 ];

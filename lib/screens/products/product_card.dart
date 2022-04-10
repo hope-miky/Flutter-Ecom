@@ -1,3 +1,4 @@
+import 'package:addisecom/constants/colors.dart';
 import 'package:addisecom/constants/products.dart';
 import 'package:addisecom/controllers/cart_controller.dart';
 import 'package:addisecom/models/product_model.dart';
@@ -130,17 +131,12 @@ class _ProductCardState extends State<ProductCard> {
             onTap: () {},
             child: CircleAvatar(
               radius: 4.w,
-              // backgroundColor:
-              //     cac.product_ids_in_cart.contains(widget.product.id)
-              //         ? Colors.teal.withOpacity(.6)
-              //         : Colors.white,
+              backgroundColor: Colors.white,
               child: Center(
                 child: Icon(
                   FontAwesomeIcons.shopify,
                   size: 11.sp,
-                  // color: cac.product_ids_in_cart.contains(widget.product.id)
-                  //     ? Colors.white
-                  //     : Colors.grey,
+                  color: maincolor,
                 ),
               ),
             ),

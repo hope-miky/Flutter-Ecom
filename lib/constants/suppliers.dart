@@ -4,7 +4,7 @@ var suppliers = [
   new Supplier(
     id: 1,
     code: "567890789009",
-    fname: "FirstName",
+    fname: "Sup 1",
     lname: "Lname",
     email: "Email",
     url: "imageurl",
@@ -18,7 +18,7 @@ var suppliers = [
   new Supplier(
     id: 2,
     code: "567890789009",
-    fname: "FirstName",
+    fname: "H&M",
     lname: "Lname",
     email: "Email",
     url: "imageurl",
@@ -32,7 +32,7 @@ var suppliers = [
   new Supplier(
     id: 3,
     code: "567890789009",
-    fname: "FirstName",
+    fname: "Nike",
     lname: "Lname",
     email: "Email",
     url: "imageurl",
@@ -46,7 +46,7 @@ var suppliers = [
   new Supplier(
     id: 4,
     code: "567890789009",
-    fname: "FirstName",
+    fname: "Sup 4",
     lname: "Lname",
     email: "Email",
     url: "imageurl",

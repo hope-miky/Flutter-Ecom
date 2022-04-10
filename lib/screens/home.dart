@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     LanddingPage(),
     AllProductsPage(),
     OrderHistoriesPage(),
+    OrderHistoriesPage(),
     ProfilePage()
   ];
 
@@ -39,45 +40,21 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: _pages[_bottomNavIndex],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Badge(
-        badgeContent: Obx(
-          () => Text(
-            cac.cart_elements.toString(),
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        child: FloatingActionButton(
-          backgroundColor: maincolor,
-          onPressed: () {
-            showDialog(
-                context: context,
-                barrierDismissible: false,
-                useSafeArea: true,
-                builder: (context) {
-                  return Cart();
-                });
-          },
-          child: Icon(
-            FontAwesomeIcons.cartArrowDown,
-          ),
-        ),
-      ),
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: [Icons.home, Icons.store, Icons.history, Icons.account_box],
-        activeColor: Colors.teal,
+        icons: [
+          Icons.home,
+          Icons.store,
+          Icons.history,
+          Icons.payment,
+          Icons.account_box
+        ],
+        activeColor: maincolor,
         inactiveColor: Colors.grey,
-        splashColor: Colors.teal,
+        splashColor: maincolor,
         activeIndex: _bottomNavIndex,
-        gapLocation: GapLocation.center,
+        gapLocation: GapLocation.none,
         notchSmoothness: NotchSmoothness.verySmoothEdge,
-        leftCornerRadius: 32,
-        rightCornerRadius: 32,
         onTap: (index) => setState(() => _bottomNavIndex = index),
-        //other params
       ),
     );
   }

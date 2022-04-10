@@ -13,11 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class AllProductsPage extends StatelessWidget {
-  final ProductController pc = Get.put(ProductController());
-
-  filterCategory(Category category) async {
-    await pc.filterByCategory(category);
-  }
+  filterCategory(Category category) async {}
 
   @override
   Widget build(BuildContext context) {
@@ -55,28 +51,26 @@ class AllProductsPage extends StatelessWidget {
         SizedBox(
           height: 1.h,
         ),
-        Obx(
-          () => Expanded(
-            child: new StaggeredGridView.countBuilder(
-              crossAxisCount: 4,
-              itemCount: pc.products.length,
-              itemBuilder: (BuildContext context, int index) => index != 1
-                  ? ProductCard(pc.products[index])
-                  : Center(
-                      child: Text(
-                        "432 \nResults",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.sp,
-                        ),
+        Expanded(
+          child: new StaggeredGridView.countBuilder(
+            crossAxisCount: 4,
+            itemCount: sampleProducts.length,
+            itemBuilder: (BuildContext context, int index) => index != 1
+                ? ProductCard(sampleProducts[index])
+                : Center(
+                    child: Text(
+                      "432 \nResults",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
                       ),
                     ),
-              staggeredTileBuilder: (int index) =>
-                  new StaggeredTile.count(2, index != 1 ? 3 : 1),
-              crossAxisSpacing: 4.0,
-            ),
+                  ),
+            staggeredTileBuilder: (int index) =>
+                new StaggeredTile.count(2, index != 1 ? 3 : 1),
+            crossAxisSpacing: 4.0,
           ),
-        )
+        ),
       ],
     );
   }
@@ -106,50 +100,41 @@ class _CategoriesListState extends State<CategoriesList> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Obx(
-          () => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: cc.categories
-                .map((category) => InkWell(
-                      onTap: () async {
-                        if (!category.filtered) {
-                          await cc.clearFilter();
-                          widget.filter(category);
-                        }
-                        setState(() {
-                          category.setfilterd(!category.filtered);
-                        });
-                      },
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 2.w),
-                        padding: EdgeInsets.symmetric(horizontal: 2.w),
-                        decoration: BoxDecoration(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: sampleCategories
+            .map((category) => InkWell(
+                  onTap: () {},
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 2.w),
+                    padding: EdgeInsets.symmetric(horizontal: 2.w),
+                    decoration: BoxDecoration(
+                      color: category.filtered == true
+                          ? Colors.teal
+                          : Colors.white,
+                      border: Border.all(
                           color: category.filtered == true
                               ? Colors.teal
-                              : Colors.white,
-                          border: Border.all(
-                              color: category.filtered == true
-                                  ? Colors.teal
-                                  : Colors.black),
-                          borderRadius: BorderRadius.circular(1.w),
-                        ),
-                        child: Text(
-                          category.name,
-                          style: GoogleFonts.poppins(
-                            fontSize: 11.sp,
-                            color: category.filtered == true
-                                ? Colors.white
-                                : Colors.black,
-                            fontWeight: category.filtered == true
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                          ),
-                        ),
+                              : Colors.grey),
+                      borderRadius: BorderRadius.circular(1.w),
+                    ),
+                    child: Text(
+                      category.name,
+                      style: GoogleFonts.poppins(
+                        fontSize: 11.sp,
+                        color: category.filtered == true
+                            ? Colors.white
+                            : Colors.grey[700],
+                        fontWeight: category.filtered == true
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                       ),
-                    ))
-                .toList(),
-          ),
-        ));
+                    ),
+                  ),
+                ))
+            .toList(),
+      ),
+    );
   }
 }
